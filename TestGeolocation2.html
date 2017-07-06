@@ -1,28 +1,31 @@
 <!doctype html>
 <html>
+
 <head>
-		<meta charset="utf-8">
-		<title>Firebase Test Geolocation 2 Web</title>
-		<script src="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css" rel="stylesheet" />
-	</head>
+    <meta charset="utf-8">
+    <title>Firebase Test Geolocation 2 Web</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css" />
+    <script src="https://js.arcgis.com/4.4/"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css" rel="stylesheet" />
+</head>
+
 <body>
 
-<div id="map" style="width: 400px; height: 300px;"></div>
-<script>
-	
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGFha29uaiIsImEiOiJjajRhb3dudTAwMWxkMzNvNW52eTZmaHVkIn0.fRgwZKibWO1D2_Hzl2CVfQ';
-	
-var map = new mapboxgl.Map({
-	
-container: 'map',
-	
-style: 'mapbox://styles/mapbox/streets-v10'
-	
-	
-});
+    <div id="map" style="width: 400px; height: 300px;"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGFha29uaiIsImEiOiJjajRhb3dudTAwMWxkMzNvNW52eTZmaHVkIn0.fRgwZKibWO1D2_Hzl2CVfQ';
 
-</script>
+        var map = new mapboxgl.Map({
+
+            container: 'map',
+
+            style: 'mapbox://styles/mapbox/streets-v10'
+
+
+        });
+    </script>
 
 </body>
+
 </html>
