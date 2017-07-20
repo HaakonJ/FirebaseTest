@@ -54,15 +54,17 @@ body,
 }
 
 .mdl-layout__header {
+    height: 75px;
     background-color: rgba(25, 65, 104, 1);
 }
 
 .titleImage {
-    height: 55px;
+    height: 35px;
     margin-left: 10px;
 }
 
 .title {
+    width: 200px;
     margin-left: 5px;
 }
 
