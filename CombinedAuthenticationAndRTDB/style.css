@@ -1,3 +1,76 @@
 .hide {
     display: none;
 }
+
+html,
+body,
+#map2 {
+    padding: 0;
+    margin: 0;
+    margin-top: 0px;
+    height: 500px;
+}
+
+#LocateButton {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 50;
+}
+
+.title-link:link,
+.title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.title-link:hover,
+.title-link:active {
+    color: lightgray;
+}
+
+.mdl-layout__header-row {
+    padding: 0 72px 0 15px;
+}
+
+.LoginContainer {
+    margin-top: 0px;
+}
+
+.mdl-textfield__input {
+    background-color: white;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+}
+
+.mdl-textfield__label {
+    margin-bottom: 2px;
+}
+
+.mdl-textfield {
+    margin-right: 5px;
+}
+
+.mdl-layout__header {
+    height: 75px;
+    background-color: rgba(25, 65, 104, 1);
+}
+
+.titleImage {
+    height: 35px;
+    margin-left: 10px;
+}
+
+.title {
+    width: 200px;
+    margin-left: 5px;
+}
+
+.mdl-button {
+    background-color: rgba(252, 181, 104, 1);
+    color: whitesmoke;
+    opacity: 1;
+    margin-right: 2px;
+}
