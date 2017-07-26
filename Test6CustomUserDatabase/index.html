@@ -65,6 +65,10 @@
                 <!-- Your content goes here -->
                 <p id="LoginMessage" class="">To use demo log in or create a new account. To create a new account type in your email and password and hit the sign up button.</p>
 
+                <p id="name"></p>
+                <p id="email"></p>
+                <p id="uid"></p>
+
                 <div id="map2" class="map2 hide">
                     <div id="LocateButton" class="hide"></div>
                 </div>
@@ -103,14 +107,6 @@
 
 
                 <script src="app.js"></script>
-
-                <!-- Simple MDL Progress Bar -->
-                <div id="p1" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
-                <script>
-                    document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-                        this.MaterialProgress.setProgress(44);
-                    });
-                </script>
             </div>
         </main>
     </div>

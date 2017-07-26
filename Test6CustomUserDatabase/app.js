@@ -10,42 +10,6 @@ var config = {
 firebase.initializeApp(config);
 
 //Get elements
-const preObject = document.getElementById('object');
-const ulList = document.getElementById('list');
-
-// Create reference
-const dbRefObject = firebase.database().ref().child('object');
-const dbRefList = dbRefObject.child('hobbies').child('egg');
-
-// Sync Object Changes
-dbRefObject.on('value', snap => {
-    preObject.innerHTML = JSON.stringify(snap.val(), null, 3);
-});
-
-// Sync List Changes
-dbRefList.on('child_added', snap => {
-
-    const li = document.createElement('li');
-    li.innerText = snap.val();
-    li.id = snap.key;
-    ulList.appendChild(li);
-});
-
-dbRefList.on('child_changed', snap => {
-
-    const liChanged = document.getElementById(snap.key);
-    liChanged.innerText = snap.val();
-
-});
-
-dbRefList.on('child_removed', snap => {
-
-    const liToRemove = document.getElementById(snap.key);
-    liToRemove.remove();
-
-});
-
-//Get elements
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
 const txtLogin = document.getElementById('btnLogin');
@@ -56,33 +20,7 @@ const map2 = document.getElementById('map2');
 const LocateButton = document.getElementById('LocateButton');
 const LoginMessage = document.getElementById('LoginMessage');
 
-//Add Login Event
-btnLogin.addEventListener('click', e => {
-    //Get email and pass
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
-    const auth = firebase.auth();
-    //Sign in
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-});
 
-//Add signup event
-btnSignUp.addEventListener('click', e => {
-    //Get email and pass
-    //TODO: Check for real Emails
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
-    const auth = firebase.auth();
-    //Sign in
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-});
-
-//
-btnLogout.addEventListener('click', e => {
-    firebase.auth().signOut();
-});
 
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -104,3 +42,28 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         LoginMessage.classList.remove('hide');
     }
 });
+
+var user = firebase.auth().currentUser;
+const name2 = document.getElementById('name');
+const email2 = document.getElementById('email');
+const uid2 = document.getElementById('uid');
+const dbRefObject = firebase.database().ref();
+
+var user = firebase.auth().currentUser;
+
+if (user != null) { 
+    name = user.displayName; 
+    email = user.email;
+    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+               // this value to authenticate with your backend server, if
+               // you have one. Use User.getToken() instead.
+}
+
+if (user != null) { 
+    user.providerData.forEach(function(profile) {  
+        console.log("Sign-in provider: " + profile.providerId);  
+        console.log("  Provider-specific UID: " + profile.uid);  
+        console.log("  Name: " + profile.displayName);  
+        console.log("  Email: " + profile.email);  
+    });
+}
