@@ -3,137 +3,136 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
     <title>Test Login with Real Time database</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="js/mdl/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    </script>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.21/esri/css/esri.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="LoginContainer">
-        <input id="txtEmail" type="email" placeholder="email">
 
-        <input id="txtPassword" type="password" placeholder="password">
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <img class="mdl-layout-title titleImage" src="images/logo.png">
+                <span class="mdl-layout-title title"> Love Lynwood Egg Treasure Hunt: <a href="#" class="title-link">Home</a></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <input id="name" type="string" placeholder="name">-->
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Lyndwood Egg Hunt</span>
+            <nav class="mdl-navigation">
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="txtEmail">
+                        <label class="mdl-textfield__label" for="txtEmail">Email...</label>
+                    </div>
+                </form>
 
-        <button id="btnLogin" class="btn btn-action">Log in</button>
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="txtPassword">
+                        <label class="mdl-textfield__label" for="txtPassword">Password...</label>
+                    </div>
+                </form>
 
-        <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action">Log in</button>
 
-        <button id="btnLogout" class="btn btn-action hide">Log Out</button>
+                <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-secondary">Sign Up</button>
+
+                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action hide">Log Out</button>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <p id="LoginMessage" class="">To use demo log in or create a new account. To create a new account type in your email and password and hit the sign up button.</p>
+
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name">
+                        <label class="mdl-textfield__label" for="name">Name...</label>
+                    </div>
+                </form>
+
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="email">
+                        <label class="mdl-textfield__label" for="email">Email...</label>
+                    </div>
+                </form>
+
+                <button id="btnSend" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action">Send</button>
+
+                <pre id="disName"></pre>
+                <pre id="disEmail"></pre>
+
+
+                <div id="map2" class="map2 hide">
+                    <div id="LocateButton" class="hide"></div>
+                </div>
+                <script src="https://js.arcgis.com/3.21/"></script>
+                <script>
+                    var map;
+
+                    require([
+                        "esri/map",
+                        "esri/dijit/LocateButton",
+                        "dojo/domReady!"
+                    ], function(
+                        Map, LocateButton
+                    ) {
+
+                        map = new Map("map2", {
+                            center: [-56.049, 38.485],
+                            zoom: 3,
+                            basemap: "satellite"
+                        });
+
+                        geoLocate = new LocateButton({
+                            map: map
+                        }, "LocateButton");
+                        geoLocate.startup();
+
+                    });
+                </script>
+
+                <!--value-->
+                <pre id="object"></pre>
+                <!--Child-->
+                <ul id="list">
+
+                </ul>
+
+
+                <script src="app.js"></script>
+
+                <!-- Simple MDL Progress Bar -->
+                <div id="p1" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                <script>
+                    document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+                        this.MaterialProgress.setProgress(44);
+                    });
+                </script>
+            </div>
+        </main>
     </div>
-
-    <p id="LoginMessage" class="">To use demo log in or create a new account. To create a new account type in your email and password and hit the sign up button.</p>
-
-    <!--value-->
-    <pre id="object"></pre>
-    <!--Child-->
-    <ul id="list">
-
-    </ul>
-
-    <p><button onclick="geoFindMe()" class="hide" id="btnlocate">Show my location</button></p>
-    <div id="out"></div>
-
-
-    <script src="app.js"></script>
-
-
-    <script>
-        function errorCallback(error) {
-            alert('ERROR(' + error.code + '): ' + error.message);
-        };
-
-        function geoFindMe() {
-            var output = document.getElementById("out");
-
-            if (!navigator.geolocation) {
-                output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-                return;
-            }
-
-            function success(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
-                var img = new Image();
-                img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=15&size=300x300&sensor=false";
-
-                output.appendChild(img);
-            }
-
-            function error() {
-                output.innerHTML = "Unable to retrieve your location";
-            }
-
-            output.innerHTML = "<p>Locating…</p>";
-
-            navigator.geolocation.getCurrentPosition(success, error);
-        }
-
-        function prompt(window, pref, message, callback) {
-            let branch = Components.classes["@mozilla.org/preferences-service;1"]
-                .getService(Components.interfaces.nsIPrefBranch);
-
-            if (branch.getPrefType(pref) === branch.PREF_STRING) {
-                switch (branch.getCharPref(pref)) {
-                    case "always":
-                        return callback(true);
-                    case "never":
-                        return callback(false);
-                }
-            }
-
-            let done = false;
-
-            function remember(value, result) {
-                return function() {
-                    done = true;
-                    branch.setCharPref(pref, value);
-                    callback(result);
-                }
-            }
-
-            let self = window.PopupNotifications.show(
-                window.gBrowser.selectedBrowser,
-                "geolocation",
-                message,
-                "geo-notification-icon", {
-                    label: "Share Location",
-                    accessKey: "S",
-                    callback: function(notification) {
-                        done = true;
-                        callback(true);
-                    }
-                }, [{
-                    label: "Always Share",
-                    accessKey: "A",
-                    callback: remember("always", true)
-                }, {
-                    label: "Never Share",
-                    accessKey: "N",
-                    callback: remember("never", false)
-                }], {
-                    eventCallback: function(event) {
-                        if (event === "dismissed") {
-                            if (!done) callback(false);
-                            done = true;
-                            window.PopupNotifications.remove(self);
-                        }
-                    },
-                    persistWhileVisible: true
-                });
-        }
-
-        prompt(window,
-            "extensions.foo-addon.allowGeolocation",
-            "Foo Add-on wants to know your location.",
-            function callback(allowed) {
-                alert(allowed);
-            });
-    </script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@ body,
 
 #LocateButton {
     position: absolute;
-    top: 100px;
+    top: 230px;
     left: 20px;
     z-index: 50;
 }
@@ -54,15 +54,17 @@ body,
 }
 
 .mdl-layout__header {
+    height: 75px;
     background-color: rgba(25, 65, 104, 1);
 }
 
 .titleImage {
-    height: 55px;
+    height: 35px;
     margin-left: 10px;
 }
 
 .title {
+    width: 200px;
     margin-left: 5px;
 }
 
