@@ -102,9 +102,12 @@ btnSend.addEventListener('click', e => {
     const dbUserRef = firebase.database().ref();
     const nameVal = name.value;
     const emailVal = email.value;
-    const packet = { nameVal, emailVal, timeStamp: new Date().toString() };
-    dbUserRef.child('users').push().set(packet);
+    const packet = { nameVal, emailVal, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
+    const nkey = dbUserRef.child('users').push().getKey();
+    dbUserRef.child('users').child(nkey.toString()).set(packet);
+    console.log("  key: " + nkey);  
 });
 
 //To find an element with random parent
 //firebase.database().ref(`/users/${usersId}`)
+//.child('goingNumber').set(goingNumber )
