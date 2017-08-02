@@ -104,3 +104,40 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         LoginMessage.classList.remove('hide');
     }
 });
+
+/*
+var user = firebase.auth().currentUser;
+const name2 = document.getElementById('name');
+const email2 = document.getElementById('email');
+const uid2 = document.getElementById('uid');
+const dbRefObject = firebase.database().ref();
+
+var user = firebase.auth().currentUser;
+
+if (user != null) { 
+    name = user.displayName; 
+    email = user.email;
+    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+               // this value to authenticate with your backend server, if
+               // you have one. Use User.getToken() instead.
+}
+*/
+if (user != null) { 
+    user.providerData.forEach(function(profile) {  
+        console.log("Sign-in provider: " + profile.providerId);  
+        console.log("  Provider-specific UID: " + profile.uid);  
+        console.log("  Name: " + profile.displayName);  
+        console.log("  Email: " + profile.email);  
+    });
+}
+
+var name = document.getElementById('');
+var email = document.getElementById('');
+
+btnSend.addEventListener('click', e => {
+    var FirebaseRef = firebase.database().Ref();
+
+    var nameText = name.value();
+
+    FirebaseRef.push().set(nameText);
+});
