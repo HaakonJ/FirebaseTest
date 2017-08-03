@@ -1,7 +1,14 @@
 src = "https://www.gstatic.com/firebasejs/4.2.0/firebase.js";
 // Initialize Firebase
  
-var config = {   apiKey: "AIzaSyC42UIRETC_VVO7cXGqo9ru8TlfDi_-El8",   authDomain: "test-project-4d8c5.firebaseapp.com",   databaseURL: "https://test-project-4d8c5.firebaseio.com",   projectId: "test-project-4d8c5",   storageBucket: "test-project-4d8c5.appspot.com",   messagingSenderId: "591336136232"  }; 
+var config = {
+    apiKey: "AIzaSyC42UIRETC_VVO7cXGqo9ru8TlfDi_-El8",
+    authDomain: "test-project-4d8c5.firebaseapp.com",
+    databaseURL: "https://test-project-4d8c5.firebaseio.com",
+    projectId: "test-project-4d8c5",
+    storageBucket: "test-project-4d8c5.appspot.com",
+    messagingSenderId: "591336136232"
+};
 firebase.initializeApp(config);
 
 //Get elements
@@ -10,7 +17,7 @@ const ulList = document.getElementById('list');
 
 // Create reference
 const dbRefObject = firebase.database().ref();
-const dbRefList = dbRefObject.child('object').child('hobbies').child('egg');
+const dbRefList = dbRefObject.child('stuff');
 
 // Sync Object Changes
 dbRefObject.on('value', snap => {
@@ -81,36 +88,34 @@ const name = document.getElementById('name');
 const email2 = document.getElementById('email2');
 const btnSend = document.getElementById('btnSend');
 
-btnSend.addEventListener('click', e => {
-    const dbUserRef = firebase.database().ref();
-    const nameVal = name.value;
-    const emailVal = email.value;
-    const packet = { nameVal, emailVal, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
-    const nkey = dbUserRef.child('users').push().getKey();
-    dbUserRef.child('users').child(nkey.toString()).set(packet);
-    console.log("  key: " + nkey);  
-});
-
-if (nkey != null) {
-    console.log("  key: " + nkey);
-}
-
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
+        console.log(firebaseUser.uid);
+        btnSend.addEventListener('click', e => {
+            const dbUserRef = firebase.database().ref();
+            const UserName = name.value;
+            const Email = email.value;
+            const packet = { UserName, Email, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
+            const nkey = firebaseUser.uid;
+            dbUserRef.child('users').child(nkey.toString()).set(packet);
+            console.log("  key: " + nkey);  
+        });
+        LoginMessage.classList.add('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
-        LoginMessage.classList.add('hide');
     } else {
         console.log('not Logged in');
+        LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
         btnSignUp.classList.remove('hide');
-        LoginMessage.classList.remove('hide');
     }
 });
+
+
 
 //To find an element with random parent
 //firebase.database().ref(`/users/${usersId}`)
