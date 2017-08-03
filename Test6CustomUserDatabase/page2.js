@@ -77,24 +77,6 @@ btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
 });
 
-const name = document.getElementById('name');
-const email2 = document.getElementById('email2');
-const btnSend = document.getElementById('btnSend');
-
-btnSend.addEventListener('click', e => {
-    const dbUserRef = firebase.database().ref();
-    const nameVal = name.value;
-    const emailVal = email.value;
-    const packet = { nameVal, emailVal, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
-    const nkey = dbUserRef.child('users').push().getKey();
-    dbUserRef.child('users').child(nkey.toString()).set(packet);
-    console.log("  key: " + nkey);  
-});
-
-if (nkey != null) {
-    console.log("  key: " + nkey);
-}
-
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -110,6 +92,20 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         btnSignUp.classList.remove('hide');
         LoginMessage.classList.remove('hide');
     }
+});
+
+const name = document.getElementById('name');
+const email2 = document.getElementById('email2');
+const btnSend = document.getElementById('btnSend');
+
+btnSend.addEventListener('click', e => {
+    const dbUserRef = firebase.database().ref();
+    const nameVal = name.value;
+    const emailVal = email.value;
+    const packet = { nameVal, emailVal, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
+    const nkey = dbUserRef.child('users').push().getKey();
+    dbUserRef.child('users').child(nkey.toString()).set(packet);
+    console.log("  key: " + nkey);  
 });
 
 //To find an element with random parent
