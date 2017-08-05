@@ -19,12 +19,13 @@ const ulList = document.getElementById('list');
 const dbRefObject = firebase.database().ref();
 const dbRefList = dbRefObject.child('stuff');
 
-const dbLat = dbRefObject.child('eggs').child('egg' + i).child('latitude');
-const dbLong = dbRefObject.child('eggs').child('egg' + i).child('longitude');
 
 ////
 ////Early work I did to pull specific data from the objects in the database.
 ////
+//const dbLat = dbRefObject.child('eggs').child('egg' + i).child('latitude');
+//const dbLong = dbRefObject.child('eggs').child('egg' + i).child('longitude');
+
 //for (var i = 1; i < 11; i++) {
 // const dbLat = dbRefObject.child('eggs').child('egg' + i).child('latitude');
 //dbLat.on('value', snap => {
