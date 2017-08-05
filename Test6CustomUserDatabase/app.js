@@ -44,8 +44,8 @@ const dbRefList = dbRefObject.child('stuff');
 var nRef = firebase.database().ref();
 var eggs = nRef.child('eggs');
 
-eggs.orderByChild('latitude').startAt(47.817767).endAt(47.819).on('child_added', function(snap) {
-    if (snap.val().longitude >= -122.277504 && snap.val().longitude <= -122.277500) { console.log(snap.val()) }
+eggs.orderByChild('latitude').startAt(47.8182).endAt(47.8184).on('child_added', function(snap) {
+    if (snap.val().longitude >= -122.2776 && snap.val().longitude <= -122.2775) { console.log(snap.val()) }
 });
 
 // Sync Object Changes
