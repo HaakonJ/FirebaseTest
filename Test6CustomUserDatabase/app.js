@@ -19,6 +19,34 @@ const ulList = document.getElementById('list');
 const dbRefObject = firebase.database().ref();
 const dbRefList = dbRefObject.child('stuff');
 
+const dbLat = dbRefObject.child('eggs').child('egg' + i).child('latitude');
+const dbLong = dbRefObject.child('eggs').child('egg' + i).child('longitude');
+
+////
+////Early work I did to pull specific data from the objects in the database.
+////
+//for (var i = 1; i < 11; i++) {
+// const dbLat = dbRefObject.child('eggs').child('egg' + i).child('latitude');
+//dbLat.on('value', snap => {
+//console.log("Latitude " + JSON.stringify(snap.val(), null, 3) + "  latArray Length: " + latArray.length);
+// });
+
+//const dbLong = dbRefObject.child('eggs').child('egg' + i).child('longitude');
+// dbLong.on('value', snap => {
+//console.log("Longitude " + JSON.stringify(snap.val(), null, 3) + "  lonArray Length: " + lonArray.length);
+// });
+//}
+
+//Bellow is a program to log out snap values from the firebase database 
+//only if it is within a certian range of latitudes and longitudes.
+
+var nRef = firebase.database().ref();
+var eggs = nRef.child('eggs');
+
+eggs.orderByChild('latitude').startAt(47.817767).endAt(47.819).on('child_added', function(snap) {
+    if (snap.val().longitude >= -122.277504 && snap.val().longitude <= -122.277500) { console.log(snap.val()) }
+});
+
 // Sync Object Changes
 dbRefObject.on('value', snap => {
     preObject.innerHTML = JSON.stringify(snap.val(), null, 3);
