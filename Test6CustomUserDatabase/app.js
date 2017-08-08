@@ -44,9 +44,9 @@ const dbRefList = dbRefObject.child('stuff');
 var nRef = firebase.database().ref();
 var eggs = nRef.child('eggs');
 
-eggs.orderByChild('latitude').startAt(47.8182).endAt(47.8184).on('child_added', function(snap) {
-    if (snap.val().longitude >= -122.2776 && snap.val().longitude <= -122.2775) { console.log(snap.val()) }
-});
+//eggs.orderByChild('latitude').startAt(47.8182).endAt(47.8184).on('child_added', function(snap) {
+//if (snap.val().longitude >= -122.2776 && snap.val().longitude <= -122.2775) { console.log(snap.val()) }
+//});
 
 // Sync Object Changes
 dbRefObject.on('value', snap => {
@@ -84,6 +84,7 @@ const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
 
 const LoginMessage = document.getElementById('LoginMessage');
+const btnScan = document.getElementById('btnScan')
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
@@ -126,7 +127,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             const dbUserRef = firebase.database().ref();
             const UserName = name.value;
             const Email = email.value;
-            const packet = { UserName, Email, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long' };
+            const Egg5Bool = false;
+            const packet = { UserName, Email, timeStamp: new Date().toString(), Lat: 'Lat', Long: 'Long', EggBools: { Egg5Bool } };
             const nkey = firebaseUser.uid;
             dbUserRef.child('users').child(nkey.toString()).set(packet);
             console.log("  key: " + nkey);  
@@ -144,8 +146,128 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     }
 });
 
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        function errorCallback(error) {
+            alert('ERROR(' + error.code + '): ' + error.message);
+        };
+
+        btnScan.addEventListener('click', e => {
+                var output = document.getElementById("");
+
+                if (!navigator.geolocation) {
+                    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+                    return;
+                }
+
+                function success(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var found = longitude + "," + latitude;
+                    //document.getElementById('map').src = 'https://lynnwoodwa.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=9da6d2bdffa144d99748e259e417176c&extent=-122.3463,47.8138,' + found + '&level=18&marker=' + found;
+
+                    eggs.orderByChild('latitude').startAt(47.8182).endAt(47.8184).on('child_added', function(snap) {
+                        if (snap.val().longitude >= -122.2776 && snap.val().longitude <= -122.2775) {
+                            console.log('Egg' + snap.val().egg + 'Bool')
+                            console.log(latitude, longitude)
+                            const dbUserRef = firebase.database().ref();
+                            dbUserRef.child('users').child(firebaseUser.uid).child('EggBools').child('Egg' + snap.val().egg + 'Bool').set('true');
+                        }
+                    });
+
+                    //var radlat1 = Math.PI * latitude / 180;
+                    //var radlat2 = Math.PI * (latitude + .0002) / 180;
+                    //var theta = longitude - (longitude + .0002);
+                    //var radtheta = Math.PI * theta / 180;
+                    //var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                    //dist = Math.acos(dist);
+                    //dist = dist * 180 / Math.PI;
+                    //dist = dist * 60 * 1.1515;
+                    //distFinal = dist * 5280;
+
+                    //console.log("   Distance between two Geolocations:  " + distFinal);
+                }
+
+                function error() {
+                    // document.getElementById('map').src = 'http://lynnwoodwa.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=9da6d2bdffa144d99748e259e417176c&extent=-122.3463,47.8138,-122.3463,47.8138';
+                }
+
+                navigator.geolocation.getCurrentPosition(success, error);
+            },
+
+            function prompt(window, pref, message, callback) {
+                let branch = Components.classes["@mozilla.org/preferences-service;1"]
+                    .getService(Components.interfaces.nsIPrefBranch);
+
+                if (branch.getPrefType(pref) === branch.PREF_STRING) {
+                    switch (branch.getCharPref(pref)) {
+                        case "always":
+                            return callback(true);
+                        case "never":
+                            return callback(false);
+                    }
+                }
+
+                let done = false;
+
+                function remember(value, result) {
+                    return function() {
+                        done = true;
+                        branch.setCharPref(pref, value);
+                        callback(result);
+                    }
+                }
+
+                let self = window.PopupNotifications.show(
+                    window.gBrowser.selectedBrowser,
+                    "geolocation",
+                    message,
+                    "geo-notification-icon", {
+                        label: "Share Location",
+                        accessKey: "S",
+                        callback: function(notification) {
+                            done = true;
+                            callback(true);
+                        }
+                    }, [{
+                            label: "Always Share",
+                            accessKey: "A",
+                            callback: remember("always", true)
+                        },
+                        {
+                            label: "Never Share",
+                            accessKey: "N",
+                            callback: remember("never", false)
+                        }
+                    ], {
+                        eventCallback: function(event) {
+                            if (event === "dismissed") {
+                                if (!done) callback(false);
+                                done = true;
+                                window.PopupNotifications.remove(self);
+                            }
+                        },
+                        persistWhileVisible: true
+                    });
+            });
+    }
+});
 
 
-//To find an element with random parent
-//firebase.database().ref(`/users/${usersId}`)
-//.child('goingNumber').set(goingNumber )
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        //More stuff
+        //showing the egg
+        const EC5 = document.getElementById('EC5')
+        const dbUserRef = firebase.database().ref();
+        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('EggBools');
+        dbEggRef.child('Egg5Bool').on('value', snap => {
+            if (snap.val() == "true") {
+                EC5.classList.remove('hide');
+            } else {
+                EC5.classList.add('hide');
+            }
+            console.log(snap.val())
+        });
+    }
+});
