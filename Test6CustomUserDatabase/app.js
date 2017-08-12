@@ -318,7 +318,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         const dbUserRef = firebase.database().ref();
         const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui');
         dbEggRef.child('e101ui').on('value', snap => {
-            if (snap.val() == "true") {
+            if (snap.val().bool == "true") {
                 EC101.classList.remove('hide');
             } else {
                 EC101.classList.add('hide');
