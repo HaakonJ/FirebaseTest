@@ -1,0 +1,501 @@
+.hide {
+    display: none;
+}
+
+.demo-card-square.mdl-card {
+    width: 320px;
+    height: 320px;
+}
+
+.demo-card-event.mdl-card {
+    width: 256px;
+    height: 356px;
+    background: rgba(25, 65, 104, 1);
+    margin: 10px;
+    margin-left: 5%;
+    position: fixed;
+    bottom: 10px;
+}
+
+.demo-card-event>.mdl-card__actions {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.demo-card-event>.mdl-card__title {
+    align-items: flex-start;
+}
+
+.demo-card-event>.mdl-card__title>h4 {
+    margin-top: 0;
+}
+
+.demo-card-event>.mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.demo-card-event>.mdl-card__actions>.material-icons {
+    padding-right: 10px;
+}
+
+.demo-card-event>.mdl-card__title,
+.demo-card-event>.mdl-card__actions,
+.demo-card-event>.mdl-card__actions>.mdl-button {
+    color: #fff;
+}
+
+.demo-card-event>.mdl-card__title,
+.demo-card-event>.mdl-card__actions,
+.demo-card-event>.mdl-card__actions>.mdl-button2 {
+    color: #fff;
+}
+
+.profileH1 {
+    text-align: center;
+}
+
+.flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    height: 325px;
+}
+
+#recentEgg {
+    height: 750px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.recentEggItem {
+    justify-content: space-around;
+    flex: 5 0;
+    margin: 0 5%;
+    text-align: center;
+    width: 200px;
+}
+
+.recentEggItem h1 {
+    flex: none;
+    text-align: center;
+    font-size: 30px;
+}
+
+#btnAccountCard,
+#btnDeleteCard {
+    margin-top: 100px;
+    font-size: 25px;
+    width: 175px;
+    height: 75px;
+}
+
+.userBackground {
+    margin-bottom: 200px;
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.userImage {
+    position: absolute;
+    height: 300px;
+    width: 250px;
+    margin-right: 50px;
+    flex: 1 0;
+    margin-top: 100px;
+}
+
+#progressEgg {
+    position: absolute;
+    flex: 0 0;
+    width: 200px;
+    height: 300px;
+}
+
+#greyProgressEgg {
+    position: absolute;
+    margin-top: -5px;
+    flex: 0 0;
+    width: 210px;
+    height: 310px;
+}
+
+#eggProgressTxt {
+    position: absolute;
+    color: white;
+    margin-top: 150px;
+    font-size: 70px;
+    text-align: center;
+}
+
+#userNameTxt {
+    width: 250px;
+    margin-top: -100px;
+    margin-left: 35px;
+    line-height: 40px;
+    color: white;
+    text-align: center;
+    font-size: 35px;
+}
+
+#collection {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.eggItem {
+    flex: 10 0;
+    margin: 0 2%
+}
+
+.eggItem h1 {
+    font-size: 28px;
+}
+
+.eggImage {
+    height: 178px;
+    width: 100px;
+}
+
+#btnFind {
+    color: black;
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    z-index: 50;
+}
+
+html,
+body,
+#map2 {
+    padding: 0;
+    margin: 0;
+    margin-top: 0px;
+    height: 300px;
+}
+
+html,
+body,
+#map3 {
+    padding: 0;
+    margin: 0;
+    margin-top: 0px;
+    height: 300px;
+}
+
+.home-nav,
+#map-nav,
+#collect-nav,
+#scan-nav,
+#profile-nav {
+    color: rgba(25, 65, 104, 1);
+}
+
+#LocateButton {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 50;
+}
+
+.title-link:link,
+.title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.title-link:hover,
+.title-link:active {
+    color: lightgray;
+}
+
+.mdl-layout__header-row {
+    padding: 0 72px 0 15px;
+}
+
+.LoginContainer {
+    margin-top: 0px;
+}
+
+#LoginMessage {
+    padding-top: 15px;
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#btnScan {
+    color: rgba(25, 65, 104, 1);
+    margin: 50px 33%;
+    width: 150px;
+    height: 50px;
+    line-height: 100%;
+}
+
+.mdl-textfield__input {
+    background-color: white;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+}
+
+.mdl-textfield__label {
+    margin-bottom: 2px;
+}
+
+.mdl-textfield {
+    margin-right: 5px;
+}
+
+.mdl-layout__header {
+    height: 75px;
+    background-color: rgba(25, 65, 104, 1);
+}
+
+.titleImage {
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: 5px;
+}
+
+.title {
+    width: 185px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.mdl-button {
+    background-color: rgba(252, 181, 104, 1);
+    color: whitesmoke;
+    opacity: 1;
+    margin-right: 2px;
+}
+
+.mdl-button2 {
+    background-color: rgb(104, 112, 252);
+    color: whitesmoke;
+    opacity: 1;
+    margin-right: 2px;
+}
+
+@media (min-width: 480px) {
+    .hide {
+        display: none;
+    }
+    #recentEgg {
+        height: 250px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    html,
+    body,
+    #map2 {
+        padding: 0;
+        margin: 0;
+        margin-top: 0px;
+        height: 300px;
+    }
+    html,
+    body,
+    #map3 {
+        padding: 0;
+        margin: 0;
+        margin-top: 0px;
+        height: 300px;
+    }
+    .home-nav,
+    #map-nav,
+    #collect-nav,
+    #scan-nav,
+    #profile-nav {
+        color: rgba(25, 65, 104, 1);
+    }
+    #LocateButton {
+        position: absolute;
+        top: 100px;
+        left: 20px;
+        z-index: 50;
+    }
+    .title-link:link,
+    .title-link:visited {
+        color: white;
+        text-decoration: none;
+    }
+    .title-link:hover,
+    .title-link:active {
+        color: lightgray;
+    }
+    .mdl-layout__header-row {
+        padding: 0 72px 0 15px;
+    }
+    .LoginContainer {
+        margin-top: 0px;
+    }
+    #LoginMessage {
+        padding-top: 15px;
+        padding-left: 5px;
+        font-weight: bold;
+        font-size: 28px;
+    }
+    #btnScan {
+        color: rgba(25, 65, 104, 1);
+        margin: 50px 40%;
+        width: 150px;
+        height: 50px;
+        line-height: 100%;
+    }
+    .mdl-textfield__input {
+        background-color: white;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 2px;
+    }
+    .mdl-textfield__label {
+        margin-bottom: 2px;
+    }
+    .mdl-textfield {
+        margin-right: 5px;
+    }
+    .mdl-layout__header {
+        height: 75px;
+        background-color: rgba(25, 65, 104, 1);
+    }
+    .titleImage {
+        height: 30px;
+        margin-top: 20px;
+        margin-left: 0px;
+        margin-right: 5px;
+    }
+    .title {
+        width: 185px;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 5px;
+    }
+    .mdl-button {
+        background-color: rgba(252, 181, 104, 1);
+        color: whitesmoke;
+        opacity: 1;
+        margin-right: 2px;
+    }
+}
+
+@media (min-width: 640px) {
+    .hide {
+        display: none;
+    }
+    html,
+    body,
+    #map2 {
+        padding: 0;
+        margin: 0;
+        margin-top: 0px;
+        height: 820px;
+    }
+    .demo-card-event.mdl-card {
+        width: 256px;
+        height: 356px;
+        background: rgba(25, 65, 104, 1);
+        margin: 10px;
+        margin-left: 85%;
+        position: fixed;
+        bottom: 10px;
+    }
+    #recentEgg {
+        height: 500px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    html,
+    body,
+    #map3 {
+        padding: 0;
+        margin: 0;
+        margin-top: 0px;
+        height: 500px;
+    }
+    .home-nav,
+    #map-nav,
+    #collect-nav,
+    #scan-nav,
+    #profile-nav {
+        color: rgba(25, 65, 104, 1);
+    }
+    #LocateButton {
+        position: absolute;
+        top: 100px;
+        left: 20px;
+        z-index: 50;
+    }
+    .title-link:link,
+    .title-link:visited {
+        color: white;
+        text-decoration: none;
+    }
+    .title-link:hover,
+    .title-link:active {
+        color: lightgray;
+    }
+    .mdl-layout__header-row {
+        padding: 0 72px 0 15px;
+    }
+    .LoginContainer {
+        margin-top: 0px;
+    }
+    #LoginMessage {
+        padding-top: 15px;
+        padding-left: 5px;
+        font-weight: bold;
+        font-size: 28px;
+    }
+    #btnScan {
+        color: rgba(25, 65, 104, 1);
+        margin: 50px 50%;
+        width: 150px;
+        height: 50px;
+        line-height: 100%;
+    }
+    .mdl-textfield__input {
+        background-color: white;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 2px;
+    }
+    .mdl-textfield__label {
+        margin-bottom: 2px;
+    }
+    .mdl-textfield {
+        margin-right: 5px;
+    }
+    .mdl-layout__header {
+        height: 75px;
+        background-color: rgba(25, 65, 104, 1);
+    }
+    .titleImage {
+        height: 40px;
+        margin-left: 10px;
+    }
+    .title {
+        width: 185px;
+        margin-left: 5px;
+    }
+    .mdl-button {
+        background-color: rgba(252, 181, 104, 1);
+        color: whitesmoke;
+        opacity: 1;
+        margin-right: 2px;
+    }
+}

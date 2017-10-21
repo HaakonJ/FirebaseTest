@@ -182,7 +182,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                     e48ui: { bool: false, eggNum: 48 },
                     e49ui: { bool: false, eggNum: 49 },
                     e50ui: { bool: false, eggNum: 50 },
-                    e101ui: { bool: false, eggNum: 101 }
+                    e101ui: { bool: false, eggNum: 101 },
+                    e102ui: { bool: false, eggNum: 102 }
                 }
             };
             const nkey = firebaseUser.uid;

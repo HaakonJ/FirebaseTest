@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ProgressBarV2</title>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+<style>
+	
+	img, #Layer_1, #Layer_2{
+		width: 200px;
+		height: 300px;
+		position: absolute;
+	}
+	
+	svg text{
+		font-weight: bold;
+	}
+	
+	text:nth-child(1){
+		font-size: 46px;
+	}
+	
+	text:nth-child(2){
+		font-size: 46px;
+	}
+	
+	text:nth-child(3){
+		font-size: 46px;
+	}
+	
+	#eggProgressTxt{
+		color: black;
+		position: absolute;
+		text-align: center;
+		margin-top: 150px;
+		font-size: 70px;
+	}
+	
+	.svgContainer{
+		display: flex;
+		width: 100%;
+		height: 325px;
+		margin-bottom: 20px;
+		justify-content: space-around;
+	}
+	
+</style>
+</head>
+<body>
+
+<div class="svgContainer">
+<img src="assets/progressegg.svg">
+<svg id="Layer_1" class="clip" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 411.1 526">
+    <defs>
+      <style>
+		.cls-1{
+			fill: orange;
+			stroke:#86c8b9;
+			stroke-miterlimit:10;
+			stroke-width:4px;}
+		.cls-2,.cls-3,.cls-4{
+			isolation:isolate;}
+		.cls-3{
+			font-size:50.28px;}
+		.cls-3,.cls-4{
+			font-family:ArialMT, Arial;}
+		.cls-4{
+			font-size:221.09px;}
+	</style>
+    </defs>
+    <title>progressegg</title>
+    <path class="cls-1" d="M444,371.8C444,477.3,519.8,597,648.2,597c117.4,0,202.9-105.3,202.9-224.5C851.2,235.8,736.2,75,648.2,75,555.2,75,444,248.1,444,371.8Z" transform="translate(-442 -73)"/>
+    <g class="cls-2">
+      <text class="cls-3" transform="translate(146 78.4) scale(1.35 1)">Egg</text>
+      <text class="cls-3" transform="translate(84 136.7) scale(1.16 1)">Collection</text>
+      <text class="cls-3" transform="translate(65 193.1) scale(1.38 1)">Progress:</text>
+    </g>
+      <text class="cls-4 updatePrcnt" transform="translate(55.9 397.6) scale(0.75 1)"></text>
+  </svg>
+  <h2 id="eggProgressTxt">0%</h2>
+</div>
+
+<script>
+	$(document).ready(function(){
+		var layer1 = $("#Layer_1");
+		var totalEggs = 50;
+		var collectedEggs = 20;
+		var missingEggs = (totalEggs - collectedEggs);
+		var percentage = (collectedEggs / totalEggs);
+		var getSvgHeight = layer1.height();
+		var calcClip = getSvgHeight - (percentage * getSvgHeight);
+		var fromTop = calcClip;
+		var rect = "rect("+fromTop+"px"+", 380px, 450px, 0px)";
+		var wholePerc = (percentage * 100);
+		
+		layer1.css("clip", rect);
+		$("#eggProgressTxt").last().text(wholePerc + "%");
+	})
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBi8HNIbweZnYK0RE3oEt0gjj9zpnV9TJo",
+    authDomain: "llth-firebasetest.firebaseapp.com",
+    databaseURL: "https://llth-firebasetest.firebaseio.com",
+    projectId: "llth-firebasetest",
+    storageBucket: "llth-firebasetest.appspot.com",
+    messagingSenderId: "212300061606"
+  };
+  firebase.initializeApp(config);
+</script>
+</body>
+</html>
