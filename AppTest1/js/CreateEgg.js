@@ -155,8 +155,24 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                     const HLat = document.getElementById('Latitude');
                     const HLong = document.getElementById('Longitude');
 
+                    const Dist = document.getElementById('Dist');
+
                     HLat.innerText = latitude;
                     HLong.innerText = longitude;
+
+                    var radlat1 = Math.PI * latitude / 180;
+                    var radlat2 = Math.PI * (latitude + .0002) / 180;
+                    var theta = longitude - (longitude + .0002);
+                    var radtheta = Math.PI * theta / 180;
+                    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                    dist = Math.acos(dist);
+                    dist = dist * 180 / Math.PI;
+                    dist = dist * 60 * 1.1515;
+                    distFinal = dist * 5280;
+
+                    Dist.innerText = "Distance between two Geolocations:  " + distFinal;
+
+                    //console.log("   Distance between two Geolocations:  " + distFinal);
                 }
 
                 function error() {
