@@ -161,7 +161,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                             dbUserEggID.on('value', function(snap) {
 
-                                if (snap.val().charAt(eggUIDIndex - 51) == "0") {
+                                if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 51) == "0") {
                                     //console.log(snap.val().indexOf("0", 50));
                                     var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
                                     //console.log(snap.val());
@@ -172,74 +172,37 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                         eui: n
                                     });
 
-                                    /*dbRecent.on('value', function(snap) {
-                                        console.log(snap.val().RE1.eggNum);
-                                        console.log(snap.val().RE1.collectionDate);
+                                    //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
+                                    //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
 
-                                        const CDR1 = snap.val().RE1.collectionDate;
-                                        const ENR1 = snap.val().RE1.eggNum;
-                                        const CDR2 = snap.val().RE2.collectionDate;
-                                        const ENR2 = snap.val().RE2.eggNum;
-                                        const CDR3 = snap.val().RE3.collectionDate;
-                                        const ENR3 = snap.val().RE3.eggNum;
-                                        const CDR4 = snap.val().RE4.collectionDate;
-                                        const ENR4 = snap.val().RE4.eggNum;
+                                    const scanned = document.getElementById('scanned');
+                                    const updateCard = document.getElementById('updateCard');
 
-                                        dbRecent.set({
-                                            RE1: {
-                                                collectionDate: new Date().getTime(),
-                                                eggNum: eggUIDIndex
-                                            },
-                                            RE2: {
-                                                collectionDate: CDR1,
-                                                eggNum: ENR1
-                                            },
-                                            RE3: {
-                                                collectionDate: CDR2,
-                                                eggNum: ENR2
-                                            },
-                                            RE4: {
-                                                collectionDate: CDR3,
-                                                eggNum: ENR3
-                                            },
-                                            RE5: {
-                                                collectionDate: CDR4,
-                                                eggNum: ENR4
-                                            }
-                                        });
-                                    });*/
-                                }
+                                    scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
+                                    const br = document.createElement('br');
+                                    scanned.appendChild(br);
+
+                                    const img = document.createElement('img');
+                                    img.classList.add('eggImage');
+                                    img.setAttribute("style", "margin-top:10px;");
+                                    img.title = 'egg' + eggUIDIndex;
+
+                                    ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
+                                    ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
+                                    img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                    if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
+                                        img.src = 'images/TestEgg102.png';
+                                    } else {
+                                        img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                    }
+                                    ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
+                                    //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
+
+                                    scanned.appendChild(img);
+
+                                    updateCard.classList.remove('hide');
+                                };
                             });
-
-                            //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
-                            //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
-
-                            const scanned = document.getElementById('scanned');
-                            const updateCard = document.getElementById('updateCard');
-
-                            scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
-                            const br = document.createElement('br');
-                            scanned.appendChild(br);
-
-                            const img = document.createElement('img');
-                            img.classList.add('eggImage');
-                            img.setAttribute("style", "margin-top:10px;");
-                            img.title = 'egg' + eggUIDIndex;
-
-                            ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
-                            ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
-                            img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                            if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
-                                img.src = 'images/TestEgg102.png';
-                            } else {
-                                img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                            }
-                            ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
-                            //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
-
-                            scanned.appendChild(img);
-
-                            updateCard.classList.remove('hide');
                         }
                     });
                 }
