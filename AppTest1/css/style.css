@@ -230,6 +230,14 @@ body,
     font-size: 28px;
 }
 
+#btnLocate {
+    color: rgba(25, 65, 104, 1);
+    margin: 50px 33%;
+    width: 150px;
+    height: 50px;
+    line-height: 100%;
+}
+
 #btnScan {
     color: rgba(25, 65, 104, 1);
     margin: 50px 33%;
@@ -347,6 +355,13 @@ body,
         font-weight: bold;
         font-size: 28px;
     }
+    #btnLocate {
+        color: rgba(25, 65, 104, 1);
+        margin: 50px 40%;
+        width: 150px;
+        height: 50px;
+        line-height: 100%;
+    }
     #btnScan {
         color: rgba(25, 65, 104, 1);
         margin: 50px 40%;
@@ -459,6 +474,13 @@ body,
         padding-left: 5px;
         font-weight: bold;
         font-size: 28px;
+    }
+    #btnLocate {
+        color: rgba(25, 65, 104, 1);
+        margin: 50px 50%;
+        width: 150px;
+        height: 50px;
+        line-height: 100%;
     }
     #btnScan {
         color: rgba(25, 65, 104, 1);

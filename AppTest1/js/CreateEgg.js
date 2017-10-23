@@ -21,6 +21,7 @@ const txtLogout = document.getElementById('btnLogout');
 
 const LoginMessage = document.getElementById('LoginMessage');
 const map = document.getElementById('map');
+const btnLocate = document.getElementById('btnLocate');
 const btnScan = document.getElementById('btnScan');
 
 const nRef = firebase.database().ref();
@@ -105,6 +106,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.add('hide');
         frmUserName.classList.remove('hide');
         btnScan.classList.remove('hide');
+        btnLocate.classList.remove('hide');
     } else {
         console.log('not Logged in');
         LoginMessage.classList.remove('hide');
@@ -116,6 +118,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.remove('hide');
         frmUserName.classList.add('hide');
         btnScan.classList.add('hide');
+        btnLocate.classList.add('hide');
     }
 });
 
@@ -154,67 +157,92 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                     HLat.innerText = latitude;
                     HLong.innerText = longitude;
+                }
 
-                    /*eggs.orderByChild('egg').on('child_added', function(snap) {
-                        if (snap.val().longitude >= (longitude - 0.0001) && snap.val().longitude <= (longitude + 0.0001) && snap.val().latitude >= (latitude - 0.0001) && snap.val().latitude <= (latitude + 0.0001)) {
-                            //console.log('Egg' + snap.val().egg + 'Bool')
-                            //console.log(latitude, longitude)
-                            const dbUserRef = firebase.database().ref();
+                function error() {
+                    //document.getElementById('map').src = 'http://lynnwoodwa.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=9da6d2bdffa144d99748e259e417176c&extent=-122.3463,47.8138,-122.3463,47.8138';
+                }
 
-                            const dbUser = dbUserRef.child('users').child(firebaseUser.uid);
+                navigator.geolocation.getCurrentPosition(success, error);
+            },
 
-                            const dbUserEggID = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
+            function prompt(window, pref, message, callback) {
+                let branch = Components.classes["@mozilla.org/preferences-service;1"]
+                    .getService(Components.interfaces.nsIPrefBranch);
 
-                            const dbRecent = dbUserRef.child('users').child(firebaseUser.uid).child('recentEggs');
+                if (branch.getPrefType(pref) === branch.PREF_STRING) {
+                    switch (branch.getCharPref(pref)) {
+                        case "always":
+                            return callback(true);
+                        case "never":
+                            return callback(false);
+                    }
+                }
 
-                            const eggUIDIndex = snap.val().egg;
+                let done = false;
 
-                            /*dbUserEggID.on('value', function(snap) {
+                function remember(value, result) {
+                    return function() {
+                        done = true;
+                        branch.setCharPref(pref, value);
+                        callback(result);
+                    }
+                }
 
-                                if (snap.val().charAt(eggUIDIndex - 51) == "0") {
-                                    //console.log(snap.val().indexOf("0", 50));
-                                    var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
-                                    //console.log(snap.val());
-                                    //console.log(eggUIDIndex);
-                                    //console.log(n);
-
-                                    dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
-                                        eui: n
-                                    });
-                                }
-                            });*/
-
-                    //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
-                    //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
-
-                    /*const scanned = document.getElementById('scanned');
-                            const updateCard = document.getElementById('updateCard');
-
-                            scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
-                            const br = document.createElement('br');
-                            scanned.appendChild(br);
-
-                            const img = document.createElement('img');
-                            img.classList.add('eggImage');
-                            img.setAttribute("style", "margin-top:10px;");
-                            img.title = 'egg' + eggUIDIndex;
-
-                            ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
-                            ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
-                            img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                            if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
-                                img.src = 'images/TestEgg102.png';
-                            } else {
-                                img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                            }
-                            ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
-                            //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
-
-                            scanned.appendChild(img);
-
-                            updateCard.classList.remove('hide');
+                let self = window.PopupNotifications.show(
+                    window.gBrowser.selectedBrowser,
+                    "geolocation",
+                    message,
+                    "geo-notification-icon", {
+                        label: "Share Location",
+                        accessKey: "S",
+                        callback: function(notification) {
+                            done = true;
+                            callback(true);
                         }
-                    });*/
+                    }, [{
+                            label: "Always Share",
+                            accessKey: "A",
+                            callback: remember("always", true)
+                        },
+                        {
+                            label: "Never Share",
+                            accessKey: "N",
+                            callback: remember("never", false)
+                        }
+                    ], {
+                        eventCallback: function(event) {
+                            if (event === "dismissed") {
+                                if (!done) callback(false);
+                                done = true;
+                                window.PopupNotifications.remove(self);
+                            }
+                        },
+                        persistWhileVisible: true
+                    });
+            });
+
+        btnLocate.addEventListener('click', e => {
+                var output = document.getElementById("");
+
+                if (!navigator.geolocation) {
+                    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+                    return;
+                }
+
+                function success(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var found = longitude + "," + latitude;
+                    const map = document.getElementById('map');
+                    const dbUserRef = firebase.database().ref();
+                    // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
+
+                    const HLat = document.getElementById('Latitude');
+                    const HLong = document.getElementById('Longitude');
+
+                    HLat.innerText = latitude;
+                    HLong.innerText = longitude;
                 }
 
                 function error() {
