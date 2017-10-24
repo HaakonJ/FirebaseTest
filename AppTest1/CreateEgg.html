@@ -82,7 +82,7 @@
             </iframe>-->
 
                 <form action="#">
-                    <div id="frmName" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="number" id="txtNewEgg">
                         <label class="mdl-textfield__label" for="txtNewEgg">Egg Number...</label>
                     </div>
@@ -91,12 +91,29 @@
                 <h3 id="Latitude">Latitude</h3>
                 <h3 id="Longitude">Longitude</h3>
 
-                <h3 id="Dist">Distance between current location and one .0002 away.</h3>
+                <h3 id="Distance">Distance between current location and one .0002 away.</h3>
 
                 <div>
                     <button id="btnLocate" class="mdl-button mdl-js-button mdl-button--raised btn btn-action hide">Scan for Location</button>
 
                     <button id="btnScan" class="mdl-button mdl-js-button mdl-button--raised btn btn-action hide">Create Egg</button>
+
+                    <button id="btnDistance" class="mdl-button mdl-js-button mdl-button--raised btn btn-action hide">Find Distance</button>
+                    <p>Finds the distance between two geolocations the one you are at and the one you type in.</p>
+
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="number" id="txtLat">
+                            <label class="mdl-textfield__label" for="txtLat">Latitude...</label>
+                        </div>
+                    </form>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="number" id="txtLong">
+                            <label class="mdl-textfield__label" for="txtLong">Longitude...</label>
+                        </div>
+                    </form>
+
                 </div>
 
                 <div id="updateCard" class="demo-card-event mdl-card mdl-shadow--2dp hide">
