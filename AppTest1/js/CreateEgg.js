@@ -23,6 +23,8 @@ const LoginMessage = document.getElementById('LoginMessage');
 const map = document.getElementById('map');
 const btnLocate = document.getElementById('btnLocate');
 const btnScan = document.getElementById('btnScan');
+const btnDistance = document.getElementById('btnDistance');
+const txtNewEgg = document.getElementById('txtNewEgg');
 
 const nRef = firebase.database().ref();
 const eggs = nRef.child('eggs');
@@ -106,6 +108,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.add('hide');
         frmUserName.classList.remove('hide');
         btnScan.classList.remove('hide');
+        txtNewEgg.classList.remove('hide');
         btnLocate.classList.remove('hide');
         btnDistance.classList.remove('hide');
     } else {
@@ -119,12 +122,211 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.remove('hide');
         frmUserName.classList.add('hide');
         btnScan.classList.add('hide');
-        btnLocate.classList.add('hide');
-        btnDistance.classList.add('hide');
+        txtNewEgg.classList.add('hide');
+        //btnLocate.classList.add('hide');
+        //btnDistance.classList.add('hide');
     }
 });
 
 const scannedEggs = document.getElementById('scannedEggs');
+
+
+btnLocate.addEventListener('click', e => {
+        var output = document.getElementById("");
+
+        if (!navigator.geolocation) {
+            output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+            return;
+        }
+
+        function success(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var found = longitude + "," + latitude;
+            const map = document.getElementById('map');
+            const dbUserRef = firebase.database().ref();
+            // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
+
+            const HLat = document.getElementById('Latitude');
+            const HLong = document.getElementById('Longitude');
+
+            HLat.innerText = latitude;
+            HLong.innerText = longitude;
+        }
+
+        function error() {
+            //document.getElementById('map').src = 'http://lynnwoodwa.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=9da6d2bdffa144d99748e259e417176c&extent=-122.3463,47.8138,-122.3463,47.8138';
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error);
+    },
+
+    function prompt(window, pref, message, callback) {
+        let branch = Components.classes["@mozilla.org/preferences-service;1"]
+            .getService(Components.interfaces.nsIPrefBranch);
+
+        if (branch.getPrefType(pref) === branch.PREF_STRING) {
+            switch (branch.getCharPref(pref)) {
+                case "always":
+                    return callback(true);
+                case "never":
+                    return callback(false);
+            }
+        }
+
+        let done = false;
+
+        function remember(value, result) {
+            return function() {
+                done = true;
+                branch.setCharPref(pref, value);
+                callback(result);
+            }
+        }
+
+        let self = window.PopupNotifications.show(
+            window.gBrowser.selectedBrowser,
+            "geolocation",
+            message,
+            "geo-notification-icon", {
+                label: "Share Location",
+                accessKey: "S",
+                callback: function(notification) {
+                    done = true;
+                    callback(true);
+                }
+            }, [{
+                    label: "Always Share",
+                    accessKey: "A",
+                    callback: remember("always", true)
+                },
+                {
+                    label: "Never Share",
+                    accessKey: "N",
+                    callback: remember("never", false)
+                }
+            ], {
+                eventCallback: function(event) {
+                    if (event === "dismissed") {
+                        if (!done) callback(false);
+                        done = true;
+                        window.PopupNotifications.remove(self);
+                    }
+                },
+                persistWhileVisible: true
+            });
+    });
+
+function errorCallback(error) {
+    alert('ERROR(' + error.code + '): ' + error.message);
+};
+
+btnDistance.addEventListener('click', e => {
+        var output = document.getElementById("");
+
+        if (!navigator.geolocation) {
+            output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+            return;
+        }
+
+        function success(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var found = longitude + "," + latitude;
+            const map = document.getElementById('map');
+            const dbUserRef = firebase.database().ref();
+            // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
+
+            const HLat = document.getElementById('Latitude');
+            const HLong = document.getElementById('Longitude');
+
+            const Distance = document.getElementById('Distance');
+
+            HLat.innerText = latitude;
+            HLong.innerText = longitude;
+
+            const TLat = document.getElementById('txtLat').value;
+            const TLong = document.getElementById('txtLong').value;
+
+            console.log("Lat: " + TLat + " Long: " + TLong)
+
+            var radlat1 = Math.PI * latitude / 180;
+            var radlat2 = Math.PI * (TLat) / 180;
+            var theta = longitude - (TLong);
+            var radtheta = Math.PI * theta / 180;
+            var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            dist = Math.acos(dist);
+            dist = dist * 180 / Math.PI;
+            dist = dist * 60 * 1.1515;
+            distFinal = dist * 5280;
+
+            Distance.innerText = "Distance between two Geolocations:  " + distFinal;
+
+            //console.log("   Distance between two Geolocations:  " + distFinal);
+        }
+
+        function error() {
+            //document.getElementById('map').src = 'http://lynnwoodwa.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=9da6d2bdffa144d99748e259e417176c&extent=-122.3463,47.8138,-122.3463,47.8138';
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error);
+    },
+
+    function prompt(window, pref, message, callback) {
+        let branch = Components.classes["@mozilla.org/preferences-service;1"]
+            .getService(Components.interfaces.nsIPrefBranch);
+
+        if (branch.getPrefType(pref) === branch.PREF_STRING) {
+            switch (branch.getCharPref(pref)) {
+                case "always":
+                    return callback(true);
+                case "never":
+                    return callback(false);
+            }
+        }
+
+        let done = false;
+
+        function remember(value, result) {
+            return function() {
+                done = true;
+                branch.setCharPref(pref, value);
+                callback(result);
+            }
+        }
+
+        let self = window.PopupNotifications.show(
+            window.gBrowser.selectedBrowser,
+            "geolocation",
+            message,
+            "geo-notification-icon", {
+                label: "Share Location",
+                accessKey: "S",
+                callback: function(notification) {
+                    done = true;
+                    callback(true);
+                }
+            }, [{
+                    label: "Always Share",
+                    accessKey: "A",
+                    callback: remember("always", true)
+                },
+                {
+                    label: "Never Share",
+                    accessKey: "N",
+                    callback: remember("never", false)
+                }
+            ], {
+                eventCallback: function(event) {
+                    if (event === "dismissed") {
+                        if (!done) callback(false);
+                        done = true;
+                        window.PopupNotifications.remove(self);
+                    }
+                },
+                persistWhileVisible: true
+            });
+    });
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
