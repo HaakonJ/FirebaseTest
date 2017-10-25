@@ -25,6 +25,7 @@ const btnLocate = document.getElementById('btnLocate');
 const btnScan = document.getElementById('btnScan');
 const btnDistance = document.getElementById('btnDistance');
 const txtNewEgg = document.getElementById('txtNewEgg');
+const NEF = document.getElementById('NEF');
 
 const nRef = firebase.database().ref();
 const eggs = nRef.child('eggs');
@@ -108,7 +109,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.add('hide');
         frmUserName.classList.remove('hide');
         btnScan.classList.remove('hide');
-        txtNewEgg.classList.remove('hide');
+        NEF.classList.remove('hide');
         btnLocate.classList.remove('hide');
         btnDistance.classList.remove('hide');
     } else {
@@ -122,7 +123,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.remove('hide');
         frmUserName.classList.add('hide');
         btnScan.classList.add('hide');
-        txtNewEgg.classList.add('hide');
+        NEF.classList.add('hide');
         //btnLocate.classList.add('hide');
         //btnDistance.classList.add('hide');
     }
