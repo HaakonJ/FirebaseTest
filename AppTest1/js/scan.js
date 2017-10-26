@@ -201,6 +201,46 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                     scanned.appendChild(img);
 
                                     updateCard.classList.remove('hide');
+                                } else if (eggUIDIndex <= 100 && snap.val().charAt(eggUIDIndex - 1) == "0") {
+                                    //console.log(snap.val().indexOf("0", 50));
+                                    var n = snap.val().substring(0, eggUIDIndex - 1) + "1" + snap.val().substring(eggUIDIndex);
+                                    //console.log(snap.val());
+                                    //console.log(eggUIDIndex);
+                                    //console.log(n);
+
+                                    dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
+                                        eui: n
+                                    });
+
+                                    //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
+                                    //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
+
+                                    const scanned = document.getElementById('scanned');
+                                    const updateCard = document.getElementById('updateCard');
+
+                                    scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
+                                    const br = document.createElement('br');
+                                    scanned.appendChild(br);
+
+                                    const img = document.createElement('img');
+                                    img.classList.add('eggImage');
+                                    img.setAttribute("style", "margin-top:10px;");
+                                    img.title = 'egg' + eggUIDIndex;
+
+                                    ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
+                                    ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
+                                    img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                    if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
+                                        img.src = 'images/TestEgg102.png';
+                                    } else {
+                                        img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                    }
+                                    ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
+                                    //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
+
+                                    scanned.appendChild(img);
+
+                                    updateCard.classList.remove('hide');
                                 };
                             });
                         }
