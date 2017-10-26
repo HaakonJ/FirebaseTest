@@ -1,15 +1,6 @@
-src = "https://www.gstatic.com/firebasejs/4.3.0/firebase.js"
-
-  // Initialize Firebase
- 
-var config = {  
-    apiKey: "AIzaSyC42UIRETC_VVO7cXGqo9ru8TlfDi_-El8",
-      authDomain: "test-project-4d8c5.firebaseapp.com",
-      databaseURL: "https://test-project-4d8c5.firebaseio.com",
-      projectId: "test-project-4d8c5",
-      storageBucket: "test-project-4d8c5.appspot.com",
-      messagingSenderId: "591336136232"
-}; 
+src = "https://www.gstatic.com/firebasejs/4.5.0/firebase.js" 
+    // Initialize Firebase
+var config = {   apiKey: "AIzaSyCnyv5HubWOmjjO1-5SwnduU0H_R_R4kd0",   authDomain: "egg-collection-database.firebaseapp.com",   databaseURL: "https://egg-collection-database.firebaseio.com",   projectId: "egg-collection-database",   storageBucket: "egg-collection-database.appspot.com",   messagingSenderId: "56187974224"  }; 
 firebase.initializeApp(config);
 
 //Get elements
