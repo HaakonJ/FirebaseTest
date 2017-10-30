@@ -279,7 +279,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                 });
                             }
 
-                            if (distFinal <= 1000) {
+                            if (distFinal <= 1000 && distFinal > 175) {
                                 const HotList = document.getElementById('HotList');
                                 const HotListItem = document.createElement('h3');
                                 HotListItem.innerText = egg13 + ": is " + distFinal + " feet away.";
