@@ -146,7 +146,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                     // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
 
                     eggs.orderByChild('egg').on('child_added', function(snap) {
-                        if (snap.val().longitude >= (longitude - 0.0001) && snap.val().longitude <= (longitude + 0.0001) && snap.val().latitude >= (latitude - 0.0001) && snap.val().latitude <= (latitude + 0.0001)) {
+                        if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.000175) && snap.val().latitude <= (latitude + 0.000175)) {
                             //console.log('Egg' + snap.val().egg + 'Bool')
                             //console.log(latitude, longitude)
                             const dbUserRef = firebase.database().ref();

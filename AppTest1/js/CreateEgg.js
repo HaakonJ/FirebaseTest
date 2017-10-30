@@ -622,6 +622,38 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     }
 });
 
+//recent egg function
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        const collection = document.getElementById('collection');
+        console.log("Test");
+
+        //const e1 = document.getElementById('e1')
+        const dbUserRef = firebase.database().ref();
+        const dbEggRef = dbUserRef.child('eggs');
+        //const notCollected = 0;
+        //const collected = 0;
+
+        dbEggRef.orderByChild('egg').on('child_added', function(snap) {
+            const section = document.createElement('section');
+            //section.classList.add('eggItem');
+            collection.appendChild(section);
+
+            const h1 = document.createElement('h1');
+            h1.innerText = snap.child('egg').val();
+            section.appendChild(h1);
+
+            const h3Lat = document.createElement('h3');
+            const h3Long = document.createElement('h3');
+            h3Lat.innerText = "Latitude: " + snap.child('latitude').val();
+            h3Long.innerText = "Longitude: " + snap.child('longitude').val();
+            h1.appendChild(h3Lat);
+            h1.appendChild(h3Long);
+        });
+    }
+
+});
+
 const btnHide = document.getElementById('btnHide');
 btnHide.addEventListener('click', e => {
     updateCard.classList.add('hide');
