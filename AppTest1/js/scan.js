@@ -167,7 +167,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                         //Distance.innerText = "Distance between two Geolocations:  " + distFinal;
                         /*if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.00049) && snap.val().latitude <= (latitude + 0.00049))*/
-                        if (distFinal <= 175) {
+                        if (distFinal <= 500) {
                             const egg13 = snap.child('egg').val();
                             console.log(snap.child('egg').val());
                             console.log(egg11);
@@ -185,96 +185,106 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                             const eggUIDIndex = snap.val().egg;
 
-                            dbUserEggID.on('value', function(snap) {
+                            if (distFinal <= 175) {
+                                dbUserEggID.on('value', function(snap) {
 
-                                if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 51) == "0") {
-                                    //console.log(snap.val().indexOf("0", 50));
-                                    var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
-                                    //console.log(snap.val());
-                                    //console.log(eggUIDIndex);
-                                    //console.log(n);
+                                    if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 51) == "0") {
+                                        //console.log(snap.val().indexOf("0", 50));
+                                        var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
+                                        //console.log(snap.val());
+                                        //console.log(eggUIDIndex);
+                                        //console.log(n);
 
-                                    dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
-                                        eui: n
-                                    });
+                                        dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
+                                            eui: n
+                                        });
 
-                                    //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
-                                    //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
+                                        //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
+                                        //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
 
-                                    const scanned = document.getElementById('scanned');
-                                    const updateCard = document.getElementById('updateCard');
+                                        const scanned = document.getElementById('scanned');
+                                        const updateCard = document.getElementById('updateCard');
 
-                                    scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
-                                    const br = document.createElement('br');
-                                    scanned.appendChild(br);
+                                        scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
+                                        const br = document.createElement('br');
+                                        scanned.appendChild(br);
 
-                                    const img = document.createElement('img');
-                                    img.classList.add('eggImage');
-                                    img.setAttribute("style", "margin-top:10px;");
-                                    img.title = 'egg' + eggUIDIndex;
+                                        const img = document.createElement('img');
+                                        img.classList.add('eggImage');
+                                        img.setAttribute("style", "margin-top:10px;");
+                                        img.title = 'egg' + eggUIDIndex;
 
-                                    ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
-                                    ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
-                                    img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                                    if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
-                                        img.src = 'images/TestEgg102.png';
-                                    } else {
+                                        ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
+                                        ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
                                         img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                                    }
-                                    ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
-                                    //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
+                                        if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
+                                            img.src = 'images/TestEgg102.png';
+                                        } else {
+                                            img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                        }
+                                        ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
+                                        //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
 
-                                    scanned.appendChild(img);
+                                        scanned.appendChild(img);
 
-                                    updateCard.classList.remove('hide');
-                                };
+                                        updateCard.classList.remove('hide');
+                                    };
 
-                                if (eggUIDIndex <= 100 && snap.val().charAt(eggUIDIndex - 1) == "0") {
-                                    //console.log(snap.val().indexOf("0", 50));
-                                    var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
-                                    //console.log(snap.val());
-                                    //console.log(eggUIDIndex);
-                                    //console.log(n);
+                                    if (eggUIDIndex <= 100 && snap.val().charAt(eggUIDIndex - 1) == "0") {
+                                        //console.log(snap.val().indexOf("0", 50));
+                                        var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
+                                        //console.log(snap.val());
+                                        //console.log(eggUIDIndex);
+                                        //console.log(n);
 
-                                    dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
-                                        eui: n
-                                    });
+                                        dbUserRef.child('users').child(firebaseUser.uid).child('eui').set({
+                                            eui: n
+                                        });
 
-                                    //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
-                                    //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
+                                        //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
+                                        //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
 
-                                    const scanned = document.getElementById('scanned');
-                                    const updateCard = document.getElementById('updateCard');
+                                        const scanned = document.getElementById('scanned');
+                                        const updateCard = document.getElementById('updateCard');
 
-                                    scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
-                                    const br = document.createElement('br');
-                                    scanned.appendChild(br);
+                                        scanned.innerText = 'Egg ' + eggUIDIndex + ' has been scanned!';
+                                        const br = document.createElement('br');
+                                        scanned.appendChild(br);
 
-                                    const img = document.createElement('img');
-                                    img.classList.add('eggImage');
-                                    img.setAttribute("style", "margin-top:10px;");
-                                    img.title = 'egg' + eggUIDIndex;
+                                        const img = document.createElement('img');
+                                        img.classList.add('eggImage');
+                                        img.setAttribute("style", "margin-top:10px;");
+                                        img.title = 'egg' + eggUIDIndex;
 
-                                    ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
-                                    ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
-                                    img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                                    if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
-                                        img.src = 'images/TestEgg102.png';
-                                    } else {
+                                        ////until more images are added this is here so that if any eggs that are listed as greater or less than 101 to 103 have an image
+                                        ////when new images are added all you will need to do is save an image with the number of the egg and a string value that is static and it will pick it up.
                                         img.src = 'images/TestEgg' + eggUIDIndex + '.png';
-                                    }
-                                    ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
-                                    //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
+                                        if (eggUIDIndex <= 100 || eggUIDIndex >= 104) {
+                                            img.src = 'images/TestEgg102.png';
+                                        } else {
+                                            img.src = 'images/TestEgg' + eggUIDIndex + '.png';
+                                        }
+                                        ////similarly to the image if the name of a website contains the egg value then it should be able to be pulled up this way.
+                                        //img.href = 'https://haakonj.github.io/Prototype-Firebase-App/egg' + snap.val().eggNum + '.html'
 
-                                    scanned.appendChild(img);
+                                        scanned.appendChild(img);
 
-                                    updateCard.classList.remove('hide');
-                                };
-                                const DFE = document.getElementById('DFE');
-                                const DEFHead = document.createElement('h1');
-                                DEFHead.innerText = egg13 + ": is " + distFinal + " feet away.";
-                                DFE.appendChild(DEFHead);
-                            });
+                                        updateCard.classList.remove('hide');
+                                    };
+
+                                    const DFE = document.getElementById('DFE');
+                                    const DEFHead = document.createElement('h3');
+                                    DEFHead.innerText = egg13 + ": is " + distFinal + " feet away.";
+                                    DFE.appendChild(DEFHead);
+                                });
+                            }
+
+                            if (distFinal <= 1000) {
+                                const HotList = document.getElementById('HotList');
+                                const HotListItem = document.createElement('h3');
+                                HotListItem.innerText = egg13 + ": is " + distFinal + " feet away.";
+                                HotList.appendChild(HotListItem);
+                            }
                         }
                     });
                 }
