@@ -146,7 +146,32 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                     // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
 
                     eggs.orderByChild('egg').on('child_added', function(snap) {
-                        if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.000175) && snap.val().latitude <= (latitude + 0.000175)) {
+
+                        var egg11 = snap.child('latitude').val();
+                        var egg12 = snap.child('longitude').val();
+
+                        //console.log(egg11);
+                        //console.log(egg12);
+
+                        var radlat1 = Math.PI * latitude / 180;
+                        var radlat2 = Math.PI * (snap.child('latitude').val()) / 180;
+                        var theta = longitude - (snap.child('longitude').val());
+                        var radtheta = Math.PI * theta / 180;
+                        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                        dist = Math.acos(dist);
+                        dist = dist * 180 / Math.PI;
+                        dist = dist * 60 * 1.1515;
+                        distFinal = dist * 5280;
+
+                        //console.log(distFinal);
+
+                        //Distance.innerText = "Distance between two Geolocations:  " + distFinal;
+                        /*if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.00049) && snap.val().latitude <= (latitude + 0.00049))*/
+                        if (distFinal <= 175) {
+                            console.log(snap.child('egg').val());
+                            console.log(egg11);
+                            console.log(egg12);
+                            console.log(distFinal);
                             //console.log('Egg' + snap.val().egg + 'Bool')
                             //console.log(latitude, longitude)
                             const dbUserRef = firebase.database().ref();
@@ -201,9 +226,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                     scanned.appendChild(img);
 
                                     updateCard.classList.remove('hide');
-                                } else if (eggUIDIndex <= 100 && snap.val().charAt(eggUIDIndex - 1) == "0") {
+                                };
+
+                                if (eggUIDIndex <= 100 && snap.val().charAt(eggUIDIndex - 1) == "0") {
                                     //console.log(snap.val().indexOf("0", 50));
-                                    var n = snap.val().substring(0, eggUIDIndex - 1) + "1" + snap.val().substring(eggUIDIndex);
+                                    var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
                                     //console.log(snap.val());
                                     //console.log(eggUIDIndex);
                                     //console.log(n);
