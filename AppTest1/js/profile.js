@@ -1,5 +1,7 @@
-src = "https://www.gstatic.com/firebasejs/4.5.0/firebase.js" 
-    // Initialize Firebase
+src = "https://www.gstatic.com/firebasejs/4.3.0/firebase.js"
+
+  // Initialize Firebase
+ 
 var config = {   apiKey: "AIzaSyCnyv5HubWOmjjO1-5SwnduU0H_R_R4kd0",   authDomain: "egg-collection-database.firebaseapp.com",   databaseURL: "https://egg-collection-database.firebaseio.com",   projectId: "egg-collection-database",   storageBucket: "egg-collection-database.appspot.com",   messagingSenderId: "56187974224"  }; 
 firebase.initializeApp(config);
 
@@ -91,6 +93,19 @@ btnSignUp.addEventListener('click', e => {
                 }
             });
         }
+
+        var user = firebase.auth().currentUser;
+        //console.log(document.getElementById('txtUpdateEmail').value);
+        user.updateProfile({ 
+            displayName: name,
+             photoURL: "/images/TestEgg101.png"
+        }).then(function() {  // Update successful.
+        }).catch(function(error) {  // An error happened.
+        });
+
+        user.updateEmail(email).then(function() {  // Update successful.
+        }).catch(function(error) {  // An error happened.
+        });
     });
 });
 
@@ -305,15 +320,46 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
+        var user = firebase.auth().currentUser;
+        var name, email, uid;
+
+        if (user != null) { 
+            dname = user.displayName; 
+            demail = user.email; 
+            dphotoUrl = user.photoURL; 
+            demailVerified = user.emailVerified; 
+            duid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                       // this value to authenticate with your backend server, if
+                       // you have one. Use User.getToken() instead.
+
+            console.log("name: " + dname);
+            console.log("email: " + demail);
+            console.log("photoUrl: " + dphotoUrl);
+            console.log("emailVerified: " + demailVerified);
+            console.log("uid: " + duid);
+        }
+    };
+});
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
         const dbUserRef = firebase.database().ref();
         const userNameTxt = document.getElementById('userNameTxt');
         const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
 
-        dbUserName.on('value', snap => {
+        var user = firebase.auth().currentUser;
+        var name, email, uid;
 
-            userNameTxt.innerText = snap.val();
-            //console.log('thing ' + snap.val());
-        })
+        if (user != null) { 
+            dname = user.displayName; 
+            userNameTxt.innerText = dname;
+        }
+
+        //dbUserName.on('value', snap => {
+
+        //userNameTxt.innerText = snap.val();
+        //console.log('thing ' + snap.val());
+        //})
     }
 });
 
@@ -360,12 +406,11 @@ btnAccountName.addEventListener('click', e => {
     //console.log(document.getElementById('txtUpdateName').value);
     if (document.getElementById('txtUpdateName').value != null) {
         document.getElementById('AccName').innerText = document.getElementById('txtUpdateName').value;
-        //user.updateProfile({
-        //displayName: document.getElementById('txtUpdateName').value
-        //}).then(function() {
-        // console.log(user.displayName);
-        //}).catch(function(error) {
-        //});
+        user.updateProfile({
+            displayName: document.getElementById('txtUpdateName').value
+        }).then(function() {
+            console.log(user.displayName);
+        }).catch(function(error) {});
     }
 });
 
@@ -394,12 +439,9 @@ btnAccountEmail.addEventListener('click', e => {
     //console.log(document.getElementById('txtUpdateEmail').value);
     if (document.getElementById('txtUpdateEmail').value != null) {
         document.getElementById('AccEmail').innerText = document.getElementById('txtUpdateEmail').value;
-        //user.updateProfile({
-        //displayName: document.getElementById('txtUpdateEmail').value
-        //}).then(function() {
-        // console.log(user.email);
-        //}).catch(function(error) {
-        //});
+        user.updateEmail(document.getElementById('txtUpdateEmail').value).then(function() {  // Update successful.
+        }).catch(function(error) {  // An error happened.
+        });
     }
 });
 
