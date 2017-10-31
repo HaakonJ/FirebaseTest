@@ -145,6 +145,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                     const dbUserRef = firebase.database().ref();
                     // map.src = 'https://www.arcgis.com/home/webmap/viewer.html?webmap=ee17122bc13e41e2977d75ef541647dc&extent=-122.3642,47.7973,' + found + '&level=18&marker=' + found;
 
+                    const YLoc = document.getElementById('YLoc');
+                    const YLocGeo = document.createElement('h3');
+                    YLocGeo.innerText = "Your Latitude is " + latitude + " your Longitude is " + longitude + ".";
+                    YLoc.appendChild(YLocGeo);
+
                     eggs.orderByChild('egg').on('child_added', function(snap) {
 
                         var egg11 = snap.child('latitude').val();
@@ -282,7 +287,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                             if (distFinal <= 1000 && distFinal > 175) {
                                 const HotList = document.getElementById('HotList');
                                 const HotListItem = document.createElement('h3');
-                                HotListItem.innerText = egg13 + ": is " + distFinal + " feet away.";
+                                HotListItem.innerText = egg13 + ": is " + distFinal + " feet away. It's Latitude is " + egg11 + " it's longitude is " + egg12 + ".";
                                 HotList.appendChild(HotListItem);
                             }
                         }
