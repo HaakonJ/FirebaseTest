@@ -167,7 +167,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                         //Distance.innerText = "Distance between two Geolocations:  " + distFinal;
                         /*if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.00049) && snap.val().latitude <= (latitude + 0.00049))*/
-                        if (distFinal <= 500) {
+                        if (distFinal <= 1000) {
                             const egg13 = snap.child('egg').val();
                             console.log(snap.child('egg').val());
                             console.log(egg11);
@@ -183,7 +183,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                             const dbRecent = dbUserRef.child('users').child(firebaseUser.uid).child('recentEggs');
 
-                            const eggUIDIndex = snap.val().egg;
+                            const eggUIDIndex = snap.child('egg').val();
 
                             if (distFinal <= 175) {
                                 dbUserEggID.on('value', function(snap) {
@@ -271,14 +271,14 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
                                         updateCard.classList.remove('hide');
                                     };
-
+                                });
+                                if (distFinal <= 175) {
                                     const DFE = document.getElementById('DFE');
                                     const DEFHead = document.createElement('h3');
                                     DEFHead.innerText = egg13 + ": is " + distFinal + " feet away.";
                                     DFE.appendChild(DEFHead);
-                                });
+                                }
                             }
-
                             if (distFinal <= 1000 && distFinal > 175) {
                                 const HotList = document.getElementById('HotList');
                                 const HotListItem = document.createElement('h3');
