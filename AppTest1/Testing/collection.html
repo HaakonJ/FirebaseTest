@@ -1,0 +1,1580 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Test collection</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="js/mdl/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <img class="mdl-layout-title titleImage" src="images/logo.png">
+                <span class="mdl-layout-title title"><a href="index.html" class="title-link">Love Lynwood Egg Treasure Hunt</a>: Collection</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <input id="name" type="string" placeholder="name">-->
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Lyndwood Egg Hunt</span>
+            <nav class="mdl-navigation">
+                <form action="#">
+                    <div id="frmName" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="string" id="txtName">
+                        <label class="mdl-textfield__label" for="txtName">Name...</label>
+                    </div>
+                </form>
+
+                <form action="#">
+                    <div id="frmEmail" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="txtEmail">
+                        <label class="mdl-textfield__label" for="txtEmail">Email...</label>
+                    </div>
+                </form>
+
+                <form action="#">
+                    <div id="frmPassword" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="txtPassword">
+                        <label class="mdl-textfield__label" for="txtPassword">Password...</label>
+                    </div>
+                </form>
+
+                <form action="#">
+                    <div id="frmUserName" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <label class="mdl-textfield__label" for="txtUserName">Hi, UserName...</label>
+                    </div>
+                </form>
+
+                <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action">Log in</button>
+
+                <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-secondary">Sign Up</button>
+
+                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action hide">Log Out</button>
+                <a class="mdl-navigation__link" href="index.html">home</a>
+                <a class="mdl-navigation__link" href="map.html">Map</a>
+                <a class="mdl-navigation__link" href="collection.html">Collection</a>
+                <a class="mdl-navigation__link" href="scan.html">Scan for Eggs</a>
+                <a class="mdl-navigation__link" href="profile.html">Profile</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <h1 id="LoginMessage" class="">To use demo log in or create a new account. To create a new account click the menu button and type in your email and password the the following boxes and hit the sign up button.</h1>
+
+
+
+                <div id="collection">
+                    <section id="sect1" class="eggItem">
+                        <h1 id="eggH1"></h1>
+                        <div id="div1" onclick="openCard(1)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect2" class="eggItem">
+                        <h1 id="eggH2"></h1>
+                        <div id="div2" onclick="openCard(2)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect3" class="eggItem">
+                        <h1 id="eggH3"></h1>
+                        <div id="div3" onclick="openCard(3)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect4" class="eggItem">
+                        <h1 id="eggH4"></h1>
+                        <div id="div4" onclick="openCard(4)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect5" class="eggItem">
+                        <h1 id="eggH5"></h1>
+                        <div id="div5" onclick="openCard(5)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect6" class="eggItem">
+                        <h1 id="eggH6"></h1>
+                        <div id="div6" onclick="openCard(6)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect7" class="eggItem">
+                        <h1 id="eggH7"></h1>
+                        <div id="div7" onclick="openCard(7)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect8" class="eggItem">
+                        <h1 id="eggH8"></h1>
+                        <div id="div8" onclick="openCard(8)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect9" class="eggItem">
+                        <h1 id="eggH9"></h1>
+                        <div id="div9" onclick="openCard(9)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect10" class="eggItem">
+                        <h1 id="eggH10"></h1>
+                        <div id="div10" onclick="openCard(10)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect11" class="eggItem">
+                        <h1 id="eggH11"></h1>
+                        <div id="div11" onclick="openCard(11)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect12" class="eggItem">
+                        <h1 id="eggH12"></h1>
+                        <div id="div12" onclick="openCard(12)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect13" class="eggItem">
+                        <h1 id="eggH13"></h1>
+                        <div id="div13" onclick="openCard(13)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect14" class="eggItem">
+                        <h1 id="eggH14"></h1>
+                        <div id="div14" onclick="openCard(14)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect15" class="eggItem">
+                        <h1 id="eggH15"></h1>
+                        <div id="div15" onclick="openCard(15)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect16" class="eggItem">
+                        <h1 id="eggH16"></h1>
+                        <div id="div16" onclick="openCard(16)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect17" class="eggItem">
+                        <h1 id="eggH17"></h1>
+                        <div id="div17" onclick="openCard(17)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect18" class="eggItem">
+                        <h1 id="eggH18"></h1>
+                        <div id="div18" onclick="openCard(18)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect19" class="eggItem">
+                        <h1 id="eggH19"></h1>
+                        <div id="div19" onclick="openCard(19)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect20" class="eggItem">
+                        <h1 id="eggH20"></h1>
+                        <div id="div20" onclick="openCard(20)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect21" class="eggItem">
+                        <h1 id="eggH21"></h1>
+                        <div id="div21" onclick="openCard(21)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect22" class="eggItem">
+                        <h1 id="eggH22"></h1>
+                        <div id="div22" onclick="openCard(22)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect23" class="eggItem">
+                        <h1 id="eggH23"></h1>
+                        <div id="div23" onclick="openCard(23)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect24" class="eggItem">
+                        <h1 id="eggH24"></h1>
+                        <div id="div24" onclick="openCard(24)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect25" class="eggItem">
+                        <h1 id="eggH25"></h1>
+                        <div id="div25" onclick="openCard(25)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect26" class="eggItem">
+                        <h1 id="eggH26"></h1>
+                        <div id="div26" onclick="openCard(26)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect27" class="eggItem">
+                        <h1 id="eggH27"></h1>
+                        <div id="div27" onclick="openCard(27)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect28" class="eggItem">
+                        <h1 id="eggH28"></h1>
+                        <div id="div28" onclick="openCard(28)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect29" class="eggItem">
+                        <h1 id="eggH29"></h1>
+                        <div id="div29" onclick="openCard(29)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect30" class="eggItem">
+                        <h1 id="eggH30"></h1>
+                        <div id="div30" onclick="openCard(30)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect31" class="eggItem">
+                        <h1 id="eggH31"></h1>
+                        <div id="div31" onclick="openCard(31)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect32" class="eggItem">
+                        <h1 id="eggH32"></h1>
+                        <div id="div32" onclick="openCard(32)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect33" class="eggItem">
+                        <h1 id="eggH33"></h1>
+                        <div id="div33" onclick="openCard(33)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect34" class="eggItem">
+                        <h1 id="eggH34"></h1>
+                        <div id="div34" onclick="openCard(34)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect35" class="eggItem">
+                        <h1 id="eggH35"></h1>
+                        <div id="div35" onclick="openCard(35)">
+
+                        </div>
+                    </section>
+
+                    <section id="sect36" class="eggItem">
+                        <h1 id="eggH36"></h1>
+                        <div id="div36" onclick="openCard(36)">
+
+                        </div>
+                    </section>
+
+                    <div id="eggCard1" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 1</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg1" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide1" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard2" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 2</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg2" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide2" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                  <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard3" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 3</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg3" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide3" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard4" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 4</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg4" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide4" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard5" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 5</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg5" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide5" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard6" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 6</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg6" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide6" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard7" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 7</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg7" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide7" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard8" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 8</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg8" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide8" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard9" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 9</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg9" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide9" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                  <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard10" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 10</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg10" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide10" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard11" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 11</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg11" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide11" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard12" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 12</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg12" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide12" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard13" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 13</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg13" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide13" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard14" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 14</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg14" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide14" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard15" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 15</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg15" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide15" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard16" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 16</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg16" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide16" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard17" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 17</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg17" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide17" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard18" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 18</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg18" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide18" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard19" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 19</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg19" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide19" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard20" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 20</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg20" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide20" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard21" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 21</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg21" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide21" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard22" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 22</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg22" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide22" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard23" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 23</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg23" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide23" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard24" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 24</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg24" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide24" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard25" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 25</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg25" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide25" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard26" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 26</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg26" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide26" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard27" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 27</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg27" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide27" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">cancel</i>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard28" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 28</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg28" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide28" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard29" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 29</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg29" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide29" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard30" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 30</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg30" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide30" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard31" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 51</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg51" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\images\Lynnwood Recreation Center.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide31" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard52" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 52</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg52" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide52" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard53" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 53</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg53" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide53" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard54" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 54</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg54" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide54" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard55" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 55</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg55" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide55" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eggCard56" class="eggCard hide">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp eggCardContent">
+                            <div class="mdl-card__title cardColor1">
+                                <h2 class="mdl-card__title-text">Egg 56</h2>
+                            </div>
+                            <div style="display: flex">
+                                <div style="display: flex; flex:1 1 20%;">
+                                    <img id="eggCardImg56" style="margin: 0 10% ; flex: 1 1 0%" width="240" height="400">
+                                </div>
+                                <div style=" flex: 1 1 75%;" class="mdl-card__supporting-text">
+                                    <p>Egg 58 was found at the Lynnwood Recreation Center. The egg here was designed by "Insert Name Here". The insperation for the eggs design was based on "Insert Inspaertion Here".</p>
+                                </div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Address and other location info:</h2>
+                                <p>Address: 18900 44th Ave W, Lynnwood, WA 98036</p>
+                                <p>Website: http://www.lynnwoodwa.gov/PlayLynnwood</p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h2 class="mdl-card__title-text">Location Image:</h2>
+                                <img style="margin-bottom: 40px" src="C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\Testing\images\LynnwoodRecreationCenter.jpg">
+                            </div>
+                            <div class="mdl-card__supporting-text" style="margin-bottom: 20px; padding-bottom: 30px">
+                                &nbsp;
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button id="btnHide56" type="button" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">cancel</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <script src="js/collection.js"></script>
+
+
+                    <div style="display: inline-flex; width:100% ">
+                        <div class="row" style="flex:1 1 0%">
+                            <ul style="list-style:none; display: flex; margin-left: 35%">
+                                <li><a href="collection.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                <i class="material-icons">navigate_before</i>
+                                              </button></a></li>
+                                <li><a href="collection.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                1
+                                              </button></a></li>
+                                <li><a href="collection2.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                2
+                                            </button></a></li>
+                                <li><a href="collection.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                3
+                                              </button></a></li>
+                                <li><a href="collection.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                4
+                                              </button></a></li>
+                                <li><a href="collection.html"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                                <i class="material-icons">navigate_next</i>
+                                              </button></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <footer class="mdl-mega-footer" onload="Clickables">
+                    <div class="mdl-mega-footer__middle-section">
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading">Eggs-plore Lynnwood Sub-Menu</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="index.html">home</a></li>
+                                <li><a href="map.html">Map</a></li>
+                                <li><a href="collection.html">Collection</a></li>
+                                <li><a href="scan.html">Scan for Eggs</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mdl-mega-footer__bottom-section">
+                        <div class="mdl-logo">Eggs-plore Lynnwood</div>
+                        <ul class="mdl-mega-footer__link-list">
+                        </ul>
+                    </div>
+                </footer>
+        </main>
+        </div>
+</body>
+
+
+</html>
