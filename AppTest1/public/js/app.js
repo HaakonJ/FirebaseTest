@@ -48,45 +48,10 @@ btnSignUp.addEventListener('click', e => {
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            var user = firebase.auth().currentUser;
-            user.updateProfile({
-                displayName: name,
-                email: email
-
-            }).then(function() {
-                console.log(user.displayName);
-            }).catch(function(error) {
-
-            });
-
             dbUserRef.child('users').child(firebaseUser.uid).set({
                 UserName: name,
                 Email: email,
-                eui: {
-                    eui: "000000000000000000000000000000000000000000000000000000"
-                },
-                recentEggs: {
-                    RE1: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE2: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE3: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE4: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE5: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    }
-                }
+                eui: "000000000000000000000000000000"
             });
         }
     });
