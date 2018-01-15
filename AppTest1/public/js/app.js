@@ -51,7 +51,7 @@ btnSignUp.addEventListener('click', e => {
             dbUserRef.child('users').child(firebaseUser.uid).set({
                 UserName: name,
                 Email: email,
-                eui: "000000000000000000000000000000"
+                eui: { eui: "000000000000000000000000000000" }
             });
         }
     });
