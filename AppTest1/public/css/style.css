@@ -2,6 +2,26 @@
     display: none;
 }
 
+#homeNav {
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: 8px;
+}
+
+.home-nav {
+    flex: 1 0 20%;
+    margin: 10px;
+}
+
+#homeHead {
+    margin: 20px 14%
+}
+
+#GoogleMap {
+    width: 100%;
+    height: 600px;
+}
+
 .eggCard {
     position: fixed;
     z-index: 1;

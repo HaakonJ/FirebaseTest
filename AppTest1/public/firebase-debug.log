@@ -1,0 +1,44 @@
+[debug] [2018-01-09T01:34:12.840Z] ----------------------------------------------------------------------
+[debug] [2018-01-09T01:34:12.844Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-01-09T01:34:12.844Z] CLI Version:   3.16.0
+[debug] [2018-01-09T01:34:12.844Z] Platform:      win32
+[debug] [2018-01-09T01:34:12.844Z] Node Version:  v6.10.3
+[debug] [2018-01-09T01:34:12.845Z] Time:          Mon Jan 08 2018 17:34:12 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-09T01:34:12.845Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-09T01:34:12.860Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-09T01:34:12.860Z] > authorizing via signed-in user
+[debug] [2018-01-09T01:34:12.862Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-09T01:34:12.862Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/B77TawMV9Ysx219BGtSFcRTjiasahi91erNlC2AIP3Q',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jan 08 2018 17:34:12 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-09T01:34:13.027Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T01:34:13.055Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/eggsplorelynnwood-1be9e  
+  
+ Mon Jan 08 2018 17:34:13 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-09T01:34:13.429Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T01:34:13.429Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/eggsplorelynnwood-1be9e/tokens  
+  
+ Mon Jan 08 2018 17:34:13 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-09T01:34:13.784Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'eggsplorelynnwood-1be9e'...
+[info] 
+[info] i  deploying database, functions, hosting
+[debug] [2018-01-09T01:34:14.226Z] Error: ENOENT: no such file or directory, open 'C:\Users\Haakon Jakobson\Documents\Internship\LynwoodIntenship\Test\Official\database.rules.json'
+    at Error (native)
+    at Object.fs.openSync (fs.js:641:18)
+    at Object.fs.readFileSync (fs.js:509:33)
+    at Config.readProjectFile (C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:151:22)
+    at C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\database\prepare.js:53:40
+    at C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\lodash\lodash.js:4944:15
+    at baseForOwn (C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\lodash\lodash.js:3001:24)
+    at C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\lodash\lodash.js:4913:18
+    at Function.forEach (C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\lodash\lodash.js:9359:14)
+    at module.exports (C:\Users\Haakon Jakobson\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\database\prepare.js:50:5)
+[error] 
+[error] Error: An unexpected error has occurred.

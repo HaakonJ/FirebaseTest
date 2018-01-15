@@ -104,7 +104,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
         //const e1 = document.getElementById('e1')
         const dbUserRef = firebase.database().ref();
-        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui');
+        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
 
         //const notCollected = 0;
         //const collected = 0;
