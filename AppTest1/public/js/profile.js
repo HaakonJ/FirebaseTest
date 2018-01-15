@@ -72,28 +72,6 @@ btnSignUp.addEventListener('click', e => {
                 Email: email,
                 eui: {
                     eui: "000000000000000000000000000000000000000000000000000000"
-                },
-                recentEggs: {
-                    RE1: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE2: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE3: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE4: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    },
-                    RE5: {
-                        collectionDate: new Date().getTime(),
-                        eggNum: 0
-                    }
                 }
             });
         }
@@ -374,7 +352,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
         //const e1 = document.getElementById('e1')
         const dbUserRef = firebase.database().ref();
-        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui');
+        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
 
         var notCollected = 0;
         var collected = 0;
