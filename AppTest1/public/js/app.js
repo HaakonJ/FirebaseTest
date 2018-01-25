@@ -10,6 +10,22 @@ var config = {
 };
 firebase.initializeApp(config);
 
+//Add a realtime Listner
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        console.log(firebaseUser);
+        LoginMessage.classList.add('hide');
+        btnLogout.classList.remove('hide');
+        btnLogin.classList.add('hide');
+        btnSignUp.classList.add('hide');
+    } else {
+        console.log('not Logged in');
+        LoginMessage.classList.remove('hide');
+        btnLogout.classList.add('hide');
+        btnLogin.classList.remove('hide');
+        btnSignUp.classList.remove('hide');
+    }
+});
 
 //Get elements
 const txtName = document.getElementById('txtName');
@@ -60,21 +76,4 @@ btnSignUp.addEventListener('click', e => {
 //
 btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
-});
-
-//Add a realtime Listner
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-        console.log(firebaseUser);
-        LoginMessage.classList.add('hide');
-        btnLogout.classList.remove('hide');
-        btnLogin.classList.add('hide');
-        btnSignUp.classList.add('hide');
-    } else {
-        console.log('not Logged in');
-        LoginMessage.classList.remove('hide');
-        btnLogout.classList.add('hide');
-        btnLogin.classList.remove('hide');
-        btnSignUp.classList.remove('hide');
-    }
 });

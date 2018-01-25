@@ -372,49 +372,49 @@ function openCard(cardNumber) {
             });
             break;
 
-        case 31:
+        case 51:
             eggCard51.classList.remove('hide');
             document.getElementById('btnHide51').addEventListener('click', e => {
                 eggCard51.classList.add('hide');
             });
             break;
 
-        case 32:
+        case 52:
             eggCard52.classList.remove('hide');
             document.getElementById('btnHide52').addEventListener('click', e => {
                 eggCard52.classList.add('hide');
             });
             break;
 
-        case 33:
+        case 53:
             eggCard53.classList.remove('hide');
             document.getElementById('btnHide53').addEventListener('click', e => {
                 eggCard53.classList.add('hide');
             });
             break;
 
-        case 34:
+        case 54:
             eggCard54.classList.remove('hide');
             document.getElementById('btnHide54').addEventListener('click', e => {
                 eggCard54.classList.add('hide');
             });
             break;
 
-        case 35:
+        case 55:
             eggCard55.classList.remove('hide');
             document.getElementById('btnHide55').addEventListener('click', e => {
                 eggCard55.classList.add('hide');
             });
             break;
 
-        case 36:
+        case 56:
             eggCard56.classList.remove('hide');
             document.getElementById('btnHide56').addEventListener('click', e => {
                 eggCard56.classList.add('hide');
             });
             break;
 
-        case 38:
+        case 58:
             document.getElementsByClassName('eggCard').classList.add('hide');
             eggCard58.classList.remove('hide');
             document.getElementById('btnHide58').addEventListener('click', e => {

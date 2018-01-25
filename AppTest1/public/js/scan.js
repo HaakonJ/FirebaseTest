@@ -176,10 +176,10 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                             if (distFinal <= 300) {
                                 dbUserEggID.on('value', function(snap) {
 
-                                    console.log("check");
-                                    if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 51) == "0") {
+
+                                    if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 71) == "0") {
                                         //console.log(snap.val().indexOf("0", 50));
-                                        var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
+                                        var n = snap.val().substring(0, eggUIDIndex - 71) + "1" + snap.val().substring(eggUIDIndex - 70);
                                         //console.log(snap.val());
                                         //console.log(eggUIDIndex);
                                         //console.log(n);
@@ -188,6 +188,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                             eui: n
                                         });
 
+                                        console.log("test 1. Snap Value: " + snap.val() + "Egg number: " + eggUIDIndex);
                                         //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
                                         //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
 

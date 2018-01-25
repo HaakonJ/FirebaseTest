@@ -11,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="collection.js"></script>
 </head>
 
 <body>
@@ -76,7 +77,12 @@
             <div class="page-content">
                 <!-- Your content goes here -->
                 <h1 id="LoginMessage" class="">To use demo log in or create a new account. To create a new account click the menu button and type in your email and password the the following boxes and hit the sign up button.</h1>
-
+                <div id="p1" class="mdl-progress fireLoading mdl-js-progress"></div>
+                <script>
+                    document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+                        this.MaterialProgress.setProgress(44);
+                    });
+                </script>
 
 
                 <div id="collection">
