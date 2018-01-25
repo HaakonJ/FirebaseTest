@@ -28,6 +28,7 @@ const txtLogin = document.getElementById('btnLogin');
 const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
 const LoginMessage = document.getElementById('LoginMessage');
+const fireLoading = document.getElementById('fireLoading');
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
@@ -60,7 +61,7 @@ btnSignUp.addEventListener('click', e => {
             dbUserRef.child('users').child(firebaseUser.uid).set({
                 UserName: name,
                 Email: email,
-                eui: "000000000000000000000000000000"
+                eui: { eui: "000000000000000000000000000000" }
             });
         }
     });
@@ -75,6 +76,7 @@ btnLogout.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
+        fireLoading.classList.add('hide');
         LoginMessage.classList.add('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
@@ -86,7 +88,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
     } else {
         console.log('not Logged in');
-        LoginMessage.classList.remove('hide');
+        //fireLoading.classList.remove('hide');
+        LoginMessage.classList.add('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
         btnSignUp.classList.remove('hide');
@@ -104,7 +107,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
         //const e1 = document.getElementById('e1')
         const dbUserRef = firebase.database().ref();
-        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui');
+        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
 
         //const notCollected = 0;
         //const collected = 0;
@@ -372,49 +375,49 @@ function openCard(cardNumber) {
             });
             break;
 
-        case 31:
+        case 51:
             eggCard51.classList.remove('hide');
             document.getElementById('btnHide51').addEventListener('click', e => {
                 eggCard51.classList.add('hide');
             });
             break;
 
-        case 32:
+        case 52:
             eggCard52.classList.remove('hide');
             document.getElementById('btnHide52').addEventListener('click', e => {
                 eggCard52.classList.add('hide');
             });
             break;
 
-        case 33:
+        case 53:
             eggCard53.classList.remove('hide');
             document.getElementById('btnHide53').addEventListener('click', e => {
                 eggCard53.classList.add('hide');
             });
             break;
 
-        case 34:
+        case 54:
             eggCard54.classList.remove('hide');
             document.getElementById('btnHide54').addEventListener('click', e => {
                 eggCard54.classList.add('hide');
             });
             break;
 
-        case 35:
+        case 55:
             eggCard55.classList.remove('hide');
             document.getElementById('btnHide55').addEventListener('click', e => {
                 eggCard55.classList.add('hide');
             });
             break;
 
-        case 36:
+        case 56:
             eggCard56.classList.remove('hide');
             document.getElementById('btnHide56').addEventListener('click', e => {
                 eggCard56.classList.add('hide');
             });
             break;
 
-        case 38:
+        case 58:
             document.getElementsByClassName('eggCard').classList.add('hide');
             eggCard58.classList.remove('hide');
             document.getElementById('btnHide58').addEventListener('click', e => {
