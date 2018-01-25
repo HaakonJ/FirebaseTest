@@ -2,28 +2,6 @@
     display: none;
 }
 
-#homeNav {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    margin-right: 8px;
-}
-
-.home-nav {
-    flex: 1 0 80%;
-    margin: 10px;
-}
-
-#homeHead {
-    font-size: 30px;
-    margin: 20px 15%
-}
-
-#GoogleMap {
-    width: 100%;
-    height: 600px;
-}
-
 .eggCard {
     position: fixed;
     z-index: 1;
@@ -350,23 +328,6 @@ body,
     .hide {
         display: none;
     }
-    #homeHead {
-        font-size: 40px;
-        margin: 20px 15%
-    }
-    #homeNav {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        margin-right: 8px;
-    }
-    .home-nav {
-        flex: 1 2 40%;
-        margin: 10px;
-        height: 50px;
-        padding-top: 20px;
-        line-height: 1;
-    }
     #recentEgg {
         height: 250px;
         display: flex;
@@ -481,7 +442,7 @@ body,
     }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 640px) {
     .hide {
         display: none;
     }
@@ -492,22 +453,6 @@ body,
         margin: 0;
         margin-top: 0px;
         height: 820px;
-    }
-    #homeHead {
-        font-size: 50px;
-        margin: 20px 15%
-    }
-    #homeNav {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        margin-right: 8px;
-    }
-    .home-nav {
-        flex: 1 0 18%;
-        margin: 10px;
-        height: 35px;
-        line-height: 1;
     }
     .demo-card-event.mdl-card {
         width: 256px;

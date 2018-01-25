@@ -60,7 +60,7 @@ btnSignUp.addEventListener('click', e => {
             dbUserRef.child('users').child(firebaseUser.uid).set({
                 UserName: name,
                 Email: email,
-                eui: { eui: "000000000000000000000000000000" }
+                eui: "000000000000000000000000000000"
             });
         }
     });
@@ -104,7 +104,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
         //const e1 = document.getElementById('e1')
         const dbUserRef = firebase.database().ref();
-        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
+        const dbEggRef = dbUserRef.child('users').child(firebaseUser.uid).child('eui');
 
         //const notCollected = 0;
         //const collected = 0;
@@ -372,49 +372,49 @@ function openCard(cardNumber) {
             });
             break;
 
-        case 51:
+        case 31:
             eggCard51.classList.remove('hide');
             document.getElementById('btnHide51').addEventListener('click', e => {
                 eggCard51.classList.add('hide');
             });
             break;
 
-        case 52:
+        case 32:
             eggCard52.classList.remove('hide');
             document.getElementById('btnHide52').addEventListener('click', e => {
                 eggCard52.classList.add('hide');
             });
             break;
 
-        case 53:
+        case 33:
             eggCard53.classList.remove('hide');
             document.getElementById('btnHide53').addEventListener('click', e => {
                 eggCard53.classList.add('hide');
             });
             break;
 
-        case 54:
+        case 34:
             eggCard54.classList.remove('hide');
             document.getElementById('btnHide54').addEventListener('click', e => {
                 eggCard54.classList.add('hide');
             });
             break;
 
-        case 55:
+        case 35:
             eggCard55.classList.remove('hide');
             document.getElementById('btnHide55').addEventListener('click', e => {
                 eggCard55.classList.add('hide');
             });
             break;
 
-        case 56:
+        case 36:
             eggCard56.classList.remove('hide');
             document.getElementById('btnHide56').addEventListener('click', e => {
                 eggCard56.classList.add('hide');
             });
             break;
 
-        case 58:
+        case 38:
             document.getElementsByClassName('eggCard').classList.add('hide');
             eggCard58.classList.remove('hide');
             document.getElementById('btnHide58').addEventListener('click', e => {

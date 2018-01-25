@@ -62,7 +62,31 @@ btnSignUp.addEventListener('click', e => {
             dbUserRef.child('users').child(firebaseUser.uid).set({
                 UserName: name,
                 Email: email,
-                eui: { eui: "000000000000000000000000000000" }
+                eui: {
+                    eui: "000000000000000000000000000000000000000000000000000000"
+                },
+                recentEggs: {
+                    RE1: {
+                        collectionDate: new Date().getTime(),
+                        eggNum: 0
+                    },
+                    RE2: {
+                        collectionDate: new Date().getTime(),
+                        eggNum: 0
+                    },
+                    RE3: {
+                        collectionDate: new Date().getTime(),
+                        eggNum: 0
+                    },
+                    RE4: {
+                        collectionDate: new Date().getTime(),
+                        eggNum: 0
+                    },
+                    RE5: {
+                        collectionDate: new Date().getTime(),
+                        eggNum: 0
+                    }
+                }
             });
         }
     });
@@ -155,31 +179,28 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                         /*if (snap.val().longitude >= (longitude - 0.000175) && snap.val().longitude <= (longitude + 0.000175) && snap.val().latitude >= (latitude - 0.00049) && snap.val().latitude <= (latitude + 0.00049))*/
                         if (distFinal <= 1000) {
                             const egg13 = snap.child('egg').val();
-                            //console.log(snap.child('egg').val());
-                            //console.log(egg11);
-                            //console.log(egg12);
-                            ////console.log(distFinal);
+                            console.log(snap.child('egg').val());
+                            console.log(egg11);
+                            console.log(egg12);
+                            console.log(distFinal);
                             //console.log('Egg' + snap.val().egg + 'Bool')
                             //console.log(latitude, longitude)
                             const dbUserRef = firebase.database().ref();
 
                             const dbUser = dbUserRef.child('users').child(firebaseUser.uid);
 
-                            const dbUserEmail = dbUserRef.child('users').child(firebaseUser.uid).child('Email');
-                            const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
                             const dbUserEggID = dbUserRef.child('users').child(firebaseUser.uid).child('eui').child('eui');
 
                             const dbRecent = dbUserRef.child('users').child(firebaseUser.uid).child('recentEggs');
 
                             const eggUIDIndex = snap.child('egg').val();
 
-                            if (distFinal <= 300) {
+                            if (distFinal <= 175) {
                                 dbUserEggID.on('value', function(snap) {
 
-
-                                    if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 71) == "0") {
+                                    if (eggUIDIndex >= 100 && snap.val().charAt(eggUIDIndex - 51) == "0") {
                                         //console.log(snap.val().indexOf("0", 50));
-                                        var n = snap.val().substring(0, eggUIDIndex - 71) + "1" + snap.val().substring(eggUIDIndex - 70);
+                                        var n = snap.val().substring(0, eggUIDIndex - 51) + "1" + snap.val().substring(eggUIDIndex - 50);
                                         //console.log(snap.val());
                                         //console.log(eggUIDIndex);
                                         //console.log(n);
@@ -188,7 +209,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                             eui: n
                                         });
 
-                                        console.log("test 1. Snap Value: " + snap.val() + "Egg number: " + eggUIDIndex);
                                         //Date.now() gives you the number of milliseconds since january 1 1970 since the newest scanned egg will always be the largest meaning that it will always show up in most recent eggs in profile
                                         //dbUserRef.child('users').child(firebaseUser.uid).set({ eui: n });
 
@@ -262,14 +282,14 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
                                         updateCard.classList.remove('hide');
                                     };
                                 });
-                                if (distFinal <= 300) {
+                                if (distFinal <= 175) {
                                     const DFE = document.getElementById('DFE');
                                     const DEFHead = document.createElement('h3');
                                     DEFHead.innerText = egg13 + ": is " + distFinal + " feet away.";
                                     DFE.appendChild(DEFHead);
                                 }
                             }
-                            if (distFinal <= 1000 && distFinal > 300) {
+                            if (distFinal <= 1000 && distFinal > 175) {
                                 const HotList = document.getElementById('HotList');
                                 const HotListItem = document.createElement('h3');
                                 HotListItem.innerText = egg13 + ": is " + distFinal + " feet away. It's Latitude is " + egg11 + " it's longitude is " + egg12 + ".";
