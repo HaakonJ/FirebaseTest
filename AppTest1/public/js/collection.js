@@ -77,7 +77,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
         fireLoading.classList.add('hide');
-        LoginMessage.classList.add('hide');
+        //LoginMessage.classList.add('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
@@ -88,8 +88,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
     } else {
         console.log('not Logged in');
-        //fireLoading.classList.remove('hide');
-        LoginMessage.classList.add('hide');
+        fireLoading.classList.add('hide');
+        LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
         btnSignUp.classList.remove('hide');
