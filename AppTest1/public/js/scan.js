@@ -27,6 +27,8 @@ const txtLogout = document.getElementById('btnLogout');
 const LoginMessage = document.getElementById('LoginMessage');
 const map = document.getElementById('map');
 const btnScan = document.getElementById('btnScan');
+const fireLoading = document.getElementById('fireLoading');
+const scanContainer = document.getElementById('scanContainer');
 
 const nRef = firebase.database().ref();
 const eggs = nRef.child('eggs');
@@ -77,7 +79,8 @@ btnLogout.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
-        LoginMessage.classList.add('hide');
+        fireLoading.classList.add('hide');
+        scanContainer.classList.remove('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
@@ -88,6 +91,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         btnScan.classList.remove('hide');
     } else {
         console.log('not Logged in');
+        fireLoading.classList.add('hide');
         LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');

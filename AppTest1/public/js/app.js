@@ -14,12 +14,15 @@ firebase.initializeApp(config);
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
-        LoginMessage.classList.add('hide');
+        fireLoading.classList.add('hide');
+        homeContainer.classList.remove('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
     } else {
         console.log('not Logged in');
+        fireLoading.classList.add('hide');
+        homeContainer.classList.remove('hide');
         LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
@@ -34,7 +37,9 @@ const txtPassword = document.getElementById('txtPassword');
 const txtLogin = document.getElementById('btnLogin');
 const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
-const LoginMessage = document.getElementById('LoginMessage')
+const LoginMessage = document.getElementById('LoginMessage');
+const fireLoading = document.getElementById('fireLoading');
+const homeContainer = document.getElementById('homeContainer');
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {

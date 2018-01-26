@@ -23,9 +23,12 @@ const txtLogin = document.getElementById('btnLogin');
 const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
 
-const map = document.getElementById('map');
-const btnFind = document.getElementById('btnFind');
+//const map = document.getElementById('map');
+//const btnFind = document.getElementById('btnFind');
 const LoginMessage = document.getElementById('LoginMessage');
+const fireLoading = document.getElementById('fireLoading');
+const GoogleMap = document.getElementById('GoogleMap');
+const mapContainer = document.getElementById('mapContainer');
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
@@ -83,7 +86,8 @@ btnLogout.addEventListener('click', e => {
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
-        LoginMessage.classList.add('hide');
+        fireLoading.classList.add('hide');
+        mapContainer.classList.remove('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
@@ -93,6 +97,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmUserName.classList.remove('hide');
     } else {
         console.log('not Logged in');
+        fireLoading.classList.add('hide');
+        //mapContainer.classList.remove('hide');
         LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
@@ -101,7 +107,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmEmail.classList.remove('hide');
         frmPassword.classList.remove('hide');
         frmUserName.classList.add('hide');
-        map.classList.add('hide');
     }
 });
 
@@ -112,6 +117,7 @@ function errorCallback(error) {
     alert('ERROR(' + error.code + '): ' + error.message);
 };
 
+/*
 btnFind.addEventListener('click', e => {
         var output = document.getElementById("");
 
@@ -202,4 +208,4 @@ btnFind.addEventListener('click', e => {
                 },
                 persistWhileVisible: true
             });
-    });
+    });*/

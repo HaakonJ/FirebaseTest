@@ -23,6 +23,8 @@ const txtLogin = document.getElementById('btnLogin');
 const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
 const LoginMessage = document.getElementById('LoginMessage');
+const fireLoading = document.getElementById('fireLoading');
+const profileContainer = document.getElementById('profileContainer');
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
@@ -98,6 +100,8 @@ btnLogout.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
+        fireLoading.classList.add('hide');
+        profileContainer.classList.remove('hide');
         LoginMessage.classList.add('hide');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
@@ -109,7 +113,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
     } else {
         console.log('not Logged in');
-        LoginMessage.classList.remove('hide');
+        fireLoading.classList.add('hide');
+        //LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
         btnSignUp.classList.remove('hide');

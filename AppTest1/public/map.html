@@ -76,24 +76,20 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <!-- Your content goes here -->
-                <p id="LoginMessage" class="">To use demo log in or create a new account. To create a new account click the menu button and type in your email and password the the following boxes and hit the sign up button.</p>
+                <div id="fireLoading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
+                <h1 id="LoginMessage" class="hide">To use demo log in or create a new account. To create a new account click the menu button and type in your email and password the the following boxes and hit the sign up button.</h1>
 
                 <!--<iframe id="map" width="100%" height="640px" src="https://www.arcgis.com/apps/webappviewer/index.html?id=4abca8e4a6bd40119c2515c1a8ebe07c&extent=-13619801.2375%2C6075299.3948%2C-13608335.6833%2C6080783.7516%2C102100" frameborder="0" scrolling="no">
             </iframe>-->
 
                 <!--<iframe id="map" width="100%" height="640px" title="Web Map Supporting the Egg Hunt  Story Map Apps " src="http://www.arcgis.com/home/webmap/viewer.html?webmap=5dd951fb7a0e4ccd9a1a652a3a0d14af&extent=-122.3213,47.7925,-122.1946,47.8417"></iframe>-->
 
-
-                <iframe id="GoogleMap" src="https://www.google.com/maps/d/embed?mid=15BaVUZPV50_Rzo3SnN2jRXH-a60&hl=en"></iframe>
+                <div id="mapContainer" class="hide">
+                    <iframe id="GoogleMap" src="https://www.google.com/maps/d/embed?mid=15BaVUZPV50_Rzo3SnN2jRXH-a60&hl=en"></iframe>
+                </div>
                 <script src="js/map.js"></script>
 
-                <!-- Simple MDL Progress Bar -->
-                <div id="p1" class="mdl-progress mdl-js-progress mdl-progress__indeterminate hide"></div>
-                <script>
-                    document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-                        this.MaterialProgress.setProgress(44);
-                    });
-                </script>
                 <footer class="mdl-mega-footer">
                     <div class="mdl-mega-footer__middle-section">
 
