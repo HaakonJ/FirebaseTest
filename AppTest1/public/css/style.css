@@ -9,6 +9,18 @@
     height: 10px;
 }
 
+.Background {
+    z-index: -1;
+    margin-bottom: 00px;
+    margin-top: -200px;
+    padding-bottom: 200px;
+    background-image: url(../images/eggBackground.png);
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .mdl-progress {
     width: 90%;
     margin-left: 5%;
@@ -24,13 +36,17 @@
     margin-right: 8px;
 }
 
+#homeContainer {
+    margin-top: 250px;
+}
+
 .home-nav {
     flex: 1 0 80%;
     margin: 10px;
 }
 
 #homeHead {
-    font-size: 30px;
+    font-size: 45px;
     margin: 20px 15%
 }
 
@@ -151,21 +167,30 @@
 }
 
 .userBackground {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
+    margin-top: -200px;
+    padding-bottom: 200px;
+    background-image: url(../images/eggBackground.png);
     background-color: cornflowerblue;
     width: 100%;
-    height: 400px;
+    height: 600px;
     display: flex;
     justify-content: space-around;
 }
 
 .userImage {
     position: absolute;
-    height: 300px;
-    width: 250px;
-    margin-right: 50px;
+    height: 400px;
+    width: 350px;
+    margin-right: 0px;
     flex: 1 0;
-    margin-top: 100px;
+    margin-top: 300px;
+}
+
+#UserImage {
+    height: 600px;
+    width: 550px;
+    margin-left: -100px;
 }
 
 #progressEgg {
@@ -192,13 +217,13 @@
 }
 
 #userNameTxt {
-    width: 250px;
-    margin-top: -100px;
-    margin-left: 35px;
-    line-height: 40px;
-    color: white;
+    width: 80%;
+    margin-top: -355px;
+    margin-left: 10%;
+    line-height: 50px;
+    color: #E48D00;
     text-align: center;
-    font-size: 35px;
+    font-size: 50px;
 }
 
 #collection {
@@ -219,6 +244,10 @@
 .eggImage {
     height: 178px;
     width: 100px;
+}
+
+body {
+    background-color: whitesmoke;
 }
 
 #btnFind {
@@ -365,8 +394,11 @@ body,
     .hide {
         display: none;
     }
+    #homeContainer {
+        margin-top: 350px;
+    }
     #homeHead {
-        font-size: 40px;
+        font-size: 60px;
         margin: 20px 15%
     }
     #homeNav {
@@ -508,9 +540,12 @@ body,
         margin-top: 0px;
         height: 820px;
     }
+    #homeContainer {
+        margin-top: 400px;
+    }
     #homeHead {
-        font-size: 50px;
-        margin: 20px 15%
+        font-size: 80px;
+        margin: 20px 5%
     }
     #homeNav {
         display: flex;
@@ -523,6 +558,17 @@ body,
         margin: 10px;
         height: 35px;
         line-height: 1;
+    }
+    .Background {
+        z-index: -1;
+        margin-bottom: 00px;
+        margin-top: -200px;
+        padding-bottom: 200px;
+        background-image: url(../images/eggBackground.png);
+        width: 100%;
+        height: 800px;
+        display: flex;
+        justify-content: space-around;
     }
     .demo-card-event.mdl-card {
         width: 256px;
