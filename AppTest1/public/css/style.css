@@ -170,9 +170,21 @@
     height: 75px;
 }
 
+.collEgg {
+    margin: 0 10%;
+    flex: 1 1 0%;
+    width: 240px;
+    height: 400px;
+}
+
+.collEggImgContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .userBackground {
     margin-bottom: 100px;
-    margin-top: -200px;
+    margin-top: -300px;
     padding-bottom: 200px;
     background-image: url(../images/eggBackground.png);
     background-color: cornflowerblue;
@@ -184,17 +196,17 @@
 
 .userImage {
     position: absolute;
-    height: 400px;
-    width: 350px;
+    height: 450px;
+    width: 400px;
     margin-right: 0px;
     flex: 1 0;
-    margin-top: 300px;
+    margin-top: 400px;
 }
 
 #UserImage {
-    height: 600px;
-    width: 550px;
-    margin-left: -100px;
+    height: 500px;
+    width: 450px;
+    margin-left: -25px;
 }
 
 #progressEgg {
@@ -221,13 +233,13 @@
 }
 
 #userNameTxt {
-    width: 80%;
-    margin-top: -355px;
-    margin-left: 10%;
+    width: 60%;
+    margin-top: -250px;
+    margin-left: 20%;
     line-height: 50px;
     color: #E48D00;
     text-align: center;
-    font-size: 50px;
+    font-size: 35px;
 }
 
 #collection {
@@ -424,6 +436,16 @@ body,
         justify-content: space-around;
         flex-wrap: wrap;
     }
+    .collEgg {
+        margin: 0 10%;
+        flex: 1 1 0%;
+        width: 240px;
+        height: 400px;
+    }
+    .collEggImgContainer {
+        display: flex;
+        flex-wrap: nowrap;
+    }
     html,
     body,
     #map2 {
@@ -529,6 +551,27 @@ body,
         color: whitesmoke;
         opacity: 1;
         margin-right: 2px;
+    }
+    #UserImage {
+        height: 600px;
+        width: 550px;
+        margin-left: -75px;
+    }
+    #userNameTxt {
+        width: 70%;
+        margin-top: -295px;
+        margin-left: 15%;
+        line-height: 50px;
+        color: #E48D00;
+        text-align: center;
+        font-size: 45px;
+    }
+}
+
+@media (min-width: 640px) {
+    .collEggImgContainer {
+        display: flex;
+        flex-wrap: nowrap;
     }
 }
 
