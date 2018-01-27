@@ -15,14 +15,16 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
         fireLoading.classList.add('hide');
-        Background.classList.remove('hide');
+        homeBackground.classList.remove('hide');
+        homeBackground.classList.add('background');
         btnLogout.classList.remove('hide');
         btnLogin.classList.add('hide');
         btnSignUp.classList.add('hide');
     } else {
         console.log('not Logged in');
         fireLoading.classList.add('hide');
-        Background.classList.remove('hide');
+        homeBackground.classList.remove('hide');
+        homeBackground.classList.add('background');
         LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
@@ -39,7 +41,7 @@ const txtSignUp = document.getElementById('btnSignUp');
 const txtLogout = document.getElementById('btnLogout');
 const LoginMessage = document.getElementById('LoginMessage');
 const fireLoading = document.getElementById('fireLoading');
-const Background = document.getElementById('Background');
+const homeBackground = document.getElementById('homeBackground');
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
