@@ -446,6 +446,9 @@ body,
         display: flex;
         flex-wrap: nowrap;
     }
+    .userBackground {
+        margin-bottom: 220px;
+    }
     html,
     body,
     #map2 {
