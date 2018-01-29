@@ -329,6 +329,28 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         const dbUserRef = firebase.database().ref();
+        const frmUserNameTxt = document.getElementById('frmUserNameTxt');
+        const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
+
+        var user = firebase.auth().currentUser;
+        var name;
+
+        if (user != null) { 
+            dname = user.displayName; 
+            frmUserNameTxt.innerText = 'Hi, ' + dname;
+        }
+
+        //dbUserName.on('value', snap => {
+
+        //userNameTxt.innerText = snap.val();
+        //console.log('thing ' + snap.val());
+        //})
+    }
+});
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        const dbUserRef = firebase.database().ref();
         const userNameTxt = document.getElementById('userNameTxt');
         const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
 
@@ -396,25 +418,6 @@ btnAccountName.addEventListener('click', e => {
         }).then(function() {
             console.log(user.displayName);
         }).catch(function(error) {});
-    }
-});
-
-const btnAccountImage = document.getElementById('btnAccountImage');
-btnAccountImage.addEventListener('click', e => {
-    var user = firebase.auth().currentUser;
-    //console.log(document.getElementById('txtUpdateEmail').value);
-    if (document.getElementById('updateImage').value != null) {
-        document.getElementById('AccImage').src = document.getElementById('updateImage');
-
-        var thingy = document.getElementById('updateImage').value;
-        console.log(thingy);
-        console.log(document.getElementById('AccImage').src);
-        //user.updateProfile({
-        //displayName: document.getElementById('txtUpdateEmail').value
-        //}).then(function() {
-        // console.log(user.email);
-        //}).catch(function(error) {
-        //});
     }
 });
 

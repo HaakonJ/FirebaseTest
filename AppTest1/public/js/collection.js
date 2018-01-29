@@ -72,6 +72,22 @@ btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
 });
 
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        const dbUserRef = firebase.database().ref();
+        const frmUserNameTxt = document.getElementById('frmUserNameTxt');
+        const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
+
+        var user = firebase.auth().currentUser;
+        var name;
+
+        if (user != null) { 
+            dname = user.displayName; 
+            frmUserNameTxt.innerText = 'Hi, ' + dname;
+        }
+    }
+});
+
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {

@@ -78,6 +78,22 @@ btnSignUp.addEventListener('click', e => {
     });
 });
 
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        const dbUserRef = firebase.database().ref();
+        const frmUserNameTxt = document.getElementById('frmUserNameTxt');
+        const dbUserName = dbUserRef.child('users').child(firebaseUser.uid).child('UserName');
+
+        var user = firebase.auth().currentUser;
+        var name;
+
+        if (user != null) { 
+            dname = user.displayName; 
+            frmUserNameTxt.innerText = 'Hi, ' + dname;
+        }
+    }
+});
+
 //
 btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();

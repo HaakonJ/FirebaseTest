@@ -242,6 +242,14 @@
     font-size: 35px;
 }
 
+.userNameHdr {
+    margin-top: -260px;
+    position: absolute;
+    margin-left: 19%;
+    font-size: 18px;
+    color: rgb(0, 29, 56);
+}
+
 #collection {
     display: flex;
     justify-content: space-around;
@@ -366,7 +374,7 @@ body,
 }
 
 .mdl-textfield__label {
-    margin-bottom: 2px;
+    margin-bottom: 0px;
 }
 
 .mdl-textfield {
@@ -528,7 +536,7 @@ body,
         margin-bottom: 2px;
     }
     .mdl-textfield__label {
-        margin-bottom: 2px;
+        margin-bottom: 0px;
     }
     .mdl-textfield {
         margin-right: 5px;
@@ -568,6 +576,13 @@ body,
         color: #E48D00;
         text-align: center;
         font-size: 45px;
+    }
+    .userNameHdr {
+        margin-top: -305px;
+        position: absolute;
+        margin-left: 13%;
+        font-size: 20px;
+        color: rgb(0, 29, 56);
     }
 }
 
@@ -704,7 +719,7 @@ body,
         margin-bottom: 2px;
     }
     .mdl-textfield__label {
-        margin-bottom: 2px;
+        margin-bottom: 0px;
     }
     .mdl-textfield {
         margin-right: 5px;
