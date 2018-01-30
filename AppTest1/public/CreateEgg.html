@@ -74,66 +74,103 @@
             </nav>
         </div>
         <main class="mdl-layout__content">
-            <div class="page-content">
+
+            <div id="fireLoading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
+            <div id="LMContainer2" class="hide LMContainer">
+                <div class="LM">
+                    <h1 id="LoginMessage" class="">You don't appear to be logged in.</h1>
+                    <h1 id="LoginMessage2" class="">To use Egg-splore Lynnwood, please log in or sign up bellow!</h1>
+                </div>
+                <form class="formC" action="#">
+                    <div id="mgsName" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="string" id="msgtxtName">
+                        <label class="mdl-textfield__label" for="msgxtName">Name...</label>
+                    </div>
+                </form>
+
+                <form class="formC" action="#">
+                    <div id="msgEmail" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="msgtxtEmail">
+                        <label class="mdl-textfield__label" for="msgtxtEmail">Email...</label>
+                    </div>
+                </form>
+
+                <form class="formC" action="#">
+                    <div id="msgPassword" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="msgtxtPassword">
+                        <label class="mdl-textfield__label" for="msgtxtPassword">Password...</label>
+                    </div>
+                </form>
+
+                <form class="formC hide" action="#">
+                    <div id="msgUserName" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <label id="msgUserNameTxt" class="mdl-textfield__label" for="msgtxtUserName">Hi, UserName...</label>
+                    </div>
+                </form>
+                <button id="msgbtnLogin" class="msgbtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action">Log in</button>
+
+                <button id="msgbtnSignUp" class="msgbtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-secondary">Sign Up</button>
+
+                <button id="msgbtnCP" class="msgbtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-action">Change Password</button>
+            </div>
+
+            <div id="pageContent" class="page-content">
                 <!-- Your content goes here -->
-                <h1 id="LoginMessage" class="">To use demo log in or create a new account. To create a new account click the menu button and type in your email and password the the following boxes and hit the sign up button.</h1>
-
-                <!--<iframe id="map" width="100%" height="640px" src="https://www.arcgis.com/apps/webappviewer/index.html?id=4abca8e4a6bd40119c2515c1a8ebe07c&extent=-13619801.2375%2C6075299.3948%2C-13608335.6833%2C6080783.7516%2C102100" frameborder="0" scrolling="no">
-            </iframe>-->
-
-                <h3 id="Latitude">Latitude</h3>
-                <h3 id="Longitude">Longitude</h3>
-
+                <!--<iframe id="map" width="100%" height="640px" src="https://www.arcgis.com/apps/webappviewer/index.html?id=4abca8e4a6bd40119c2515c1a8ebe07c&extent=-13619801.2375%2C6075299.3948%2C-13608335.6833%2C6080783.7516%2C102100" frameborder="0" scrolling="no"></iframe>-->
                 <div>
-                    <button id="btnLocate" class="mdl-button mdl-js-button mdl-button--raised btn btn-action">Scan for Location</button>
-                    <form action="" id="NEF">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" id="txtNewEgg">
-                            <label class="mdl-textfield__label" for="txtNewEgg">Egg Number...</label>
-                        </div>
-                    </form>
-                    <button id="btnScan" class="mdl-button mdl-js-button mdl-button--raised btn btn-action hide">Create Egg</button>
+                    <h3 id="Latitude">Latitude</h3>
+                    <h3 id="Longitude">Longitude</h3>
 
-                    <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" id="txtLat">
-                            <label class="mdl-textfield__label" for="txtLat">Latitude...</label>
-                        </div>
-                    </form>
-                    <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" id="txtLong">
-                            <label class="mdl-textfield__label" for="txtLong">Longitude...</label>
-                        </div>
-                    </form>
+                    <div>
+                        <button id="btnLocate" class="mdl-button mdl-js-button mdl-button--raised btn btn-action">Scan for Location</button>
+                        <form action="" id="NEF">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="txtNewEgg">
+                                <label class="mdl-textfield__label" for="txtNewEgg">Egg Number...</label>
+                            </div>
+                        </form>
+                        <button id="btnScan" class="mdl-button mdl-js-button mdl-button--raised btn btn-action hide">Create Egg</button>
 
-                    <p>Finds the distance between two geolocations the one you are at and the one you type in.</p>
-                    <h3 id="Distance">Distance between current location and another.</h3>
-                    <button id="btnDistance" class="mdl-button mdl-js-button mdl-button--raised btn btn-action">Find Distance</button>
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="txtLat">
+                                <label class="mdl-textfield__label" for="txtLat">Latitude...</label>
+                            </div>
+                        </form>
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="txtLong">
+                                <label class="mdl-textfield__label" for="txtLong">Longitude...</label>
+                            </div>
+                        </form>
 
-                </div>
-
-                <div id="updateCard" class="demo-card-event mdl-card mdl-shadow--2dp hide">
-                    <div class="mdl-card__title mdl-card--expand">
-                        <h4 id="scanned">
-                        </h4>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a href="collection.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Check collection!
-        </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button id="btnHide" type="button" class="mdl-chip__action"><i class="material-icons">cancel</i></button>
-
+                        <p>Finds the distance between two geolocations the one you are at and the one you type in.</p>
+                        <h3 id="Distance">Distance between current location and another.</h3>
+                        <button id="btnDistance" class="mdl-button mdl-js-button mdl-button--raised btn btn-action">Find Distance</button>
 
                     </div>
+
+                    <div id="updateCard" class="demo-card-event mdl-card mdl-shadow--2dp hide">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4 id="scanned">
+                            </h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a href="collection.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Check collection!</a>
+                            <div class="mdl-layout-spacer"></div>
+                            <button id="btnHide" type="button" class="mdl-chip__action"><i class="material-icons">cancel</i></button>
+
+
+                        </div>
+                    </div>
+
+                    <div id="collection">
+                    </div>
+
+                    <script src="js/CreateEgg.js"></script>
+
                 </div>
-
-                <div id="collection">
-                </div>
-
-                <script src="js/CreateEgg.js"></script>
-
             </div>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer__middle-section">

@@ -32,6 +32,15 @@
     height: 10px;
 }
 
+.msgbtn {
+    flex: 1 1 33%;
+    height: 50px;
+}
+
+#msgbtnCP {
+    margin-top: 15px;
+}
+
 #homeNav {
     display: flex;
     flex-wrap: wrap;
@@ -334,11 +343,50 @@ body,
     margin-top: 0px;
 }
 
-#LoginMessage {
+.LM {
+    width: 100%;
     padding-top: 15px;
     padding-left: 5px;
+}
+
+.LMContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#LMContainer {
+    background-color: cornflowerblue;
+    position: absolute;
+    margin: 225px 0 0 5%;
+    width: 80%;
+    padding: 20px;
+}
+
+#LMContainer2 {
+    background-color: cornflowerblue;
+    margin: 100px 0 100px 5%;
+    width: 80%;
+    padding: 20px;
+}
+
+.mdl-textfield {
+    width: 100%;
+}
+
+.formC {
+    flex: 1 1 100%;
+}
+
+#LoginMessage {
     font-weight: bold;
     font-size: 28px;
+    text-align: center;
+}
+
+#LoginMessage2 {
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
 }
 
 #btnDistance {
@@ -402,7 +450,7 @@ body,
 
 .mdl-button {
     background-color: rgba(252, 181, 104, 1);
-    color: whitesmoke;
+    color: rgba(25, 65, 104, 1);
     opacity: 1;
     margin-right: 2px;
 }
@@ -415,6 +463,35 @@ body,
 }
 
 @media (min-width: 480px) {
+    .msgbtn {
+        flex: 1 1 33%;
+        height: 50px;
+    }
+    #msgbtnLogin {
+        margin-right: 20px;
+    }
+    #msgbtnSignUp {
+        margin-left: 20px;
+    }
+    #msgbtnCP {
+        margin-top: 15px;
+    }
+    .mdl-textfield {
+        width: 100%;
+    }
+    #LMContainer {
+        background-color: cornflowerblue;
+        position: absolute;
+        margin: 300px 0 0 10%;
+        width: 80%;
+        padding: 20px;
+    }
+    #LMContainer2 {
+        background-color: cornflowerblue;
+        margin: 100px 0 100px 10%;
+        width: 80%;
+        padding: 20px;
+    }
     .hide {
         display: none;
     }
@@ -501,9 +578,16 @@ body,
     .LoginContainer {
         margin-top: 0px;
     }
-    #LoginMessage {
+    .LM {
+        width: 100%;
         padding-top: 15px;
         padding-left: 5px;
+    }
+    #LoginMessage {
+        font-weight: bold;
+        font-size: 28px;
+    }
+    #LoginMessage2 {
         font-weight: bold;
         font-size: 28px;
     }
@@ -559,7 +643,7 @@ body,
     }
     .mdl-button {
         background-color: rgba(252, 181, 104, 1);
-        color: whitesmoke;
+        color: rgba(25, 65, 104, 1);
         opacity: 1;
         margin-right: 2px;
     }
@@ -594,6 +678,25 @@ body,
 }
 
 @media (min-width: 780px) {
+    #LMContainer {
+        background-color: cornflowerblue;
+        position: absolute;
+        margin: 400px 0 0 20%;
+        width: 60%;
+        padding: 20px;
+    }
+    #LMContainer2 {
+        background-color: cornflowerblue;
+        margin: 100px 0 100px 20%;
+        width: 60%;
+        padding: 20px;
+    }
+    .mdl-textfield {
+        width: 90%;
+    }
+    .formC {
+        flex: 1 1 33%;
+    }
     .hide {
         display: none;
     }
@@ -684,9 +787,16 @@ body,
     .LoginContainer {
         margin-top: 0px;
     }
-    #LoginMessage {
+    .LM {
+        width: 100%;
         padding-top: 15px;
         padding-left: 5px;
+    }
+    #LoginMessage {
+        font-weight: bold;
+        font-size: 28px;
+    }
+    #LoginMessage2 {
         font-weight: bold;
         font-size: 28px;
     }
@@ -738,7 +848,7 @@ body,
     }
     .mdl-button {
         background-color: rgba(252, 181, 104, 1);
-        color: whitesmoke;
+        color: rgba(25, 65, 104, 1);
         opacity: 1;
         margin-right: 2px;
     }
