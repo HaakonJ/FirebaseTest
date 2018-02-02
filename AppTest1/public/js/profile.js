@@ -159,6 +159,10 @@ btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
 });
 
+msgbtnCP.addEventListener('click', e => {
+    window.location.href = "changePassword.html";
+});
+
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -500,6 +504,19 @@ btnAccountEmail.addEventListener('click', e => {
         });
     }
 });
+
+const btnAccountPass = document.getElementById('btnAccountPass');
+btnAccountPass.addEventListener('click', e => {
+    var user = firebase.auth().currentUser;
+    //console.log(document.getElementById('txtUpdatePassword').value);
+    if (document.getElementById('txtUpdatePassword').value != null) {
+        document.getElementById('AccEmail').innerText = document.getElementById('txtUpdatePassword').value;
+        user.updatePassword(document.getElementById('txtUpdatePassword').value).then(function() {  // Update successful.
+        }).catch(function(error) {  // An error happened.
+        });
+    }
+});
+
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {

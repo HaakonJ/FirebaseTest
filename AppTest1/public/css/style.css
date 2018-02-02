@@ -38,6 +38,7 @@
 }
 
 #msgbtnCP {
+    flex: 1 1 33%;
     margin-top: 15px;
 }
 
@@ -193,8 +194,8 @@
 
 .userBackground {
     margin-bottom: 100px;
-    margin-top: -300px;
-    padding-bottom: 200px;
+    margin-top: -400px;
+    padding-bottom: 350px;
     background-image: url(../images/eggBackground.png);
     background-color: cornflowerblue;
     width: 100%;
@@ -209,7 +210,7 @@
     width: 400px;
     margin-right: 0px;
     flex: 1 0;
-    margin-top: 400px;
+    margin-top: 425px;
 }
 
 #UserImage {
@@ -474,7 +475,8 @@ body,
         margin-left: 20px;
     }
     #msgbtnCP {
-        margin-top: 15px;
+        flex: 1 1 31%;
+        margin-left: 0px;
     }
     .mdl-textfield {
         width: 100%;

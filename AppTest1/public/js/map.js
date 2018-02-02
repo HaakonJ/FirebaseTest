@@ -175,6 +175,10 @@ btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
 });
 
+msgbtnCP.addEventListener('click', e => {
+    window.location.href = "changePassword.html";
+});
+
 //Add a realtime Listner
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {

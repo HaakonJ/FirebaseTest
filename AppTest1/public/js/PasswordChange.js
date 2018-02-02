@@ -25,8 +25,6 @@ const txtLogout = document.getElementById('btnLogout');
 const LoginMessage = document.getElementById('LoginMessage');
 const fireLoading = document.getElementById('fireLoading');
 const homeBackground = document.getElementById('homeBackground');
-const homeContainer = document.getElementById('homeContainer');
-const homeHead = document.getElementById('homeHead');
 const LMContainer = document.getElementById('LMContainer');
 const msgbtnLogin = document.getElementById('msgbtnLogin');
 const msgbtnSignUp = document.getElementById('msgbtnSignUp');
@@ -37,16 +35,6 @@ btnLogin.addEventListener('click', e => {
     //Get email and pass
     const email = txtEmail.value;
     const pass = txtPassword.value;
-    const auth = firebase.auth();
-    //Sign in
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-});
-
-msgbtnLogin.addEventListener('click', e => {
-    //Get email and pass
-    const email = msgtxtEmail.value;
-    const pass = msgtxtPassword.value;
     const auth = firebase.auth();
     //Sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
@@ -103,62 +91,9 @@ btnSignUp.addEventListener('click', e => {
     });
 });
 
-msgbtnSignUp.addEventListener('click', e => {
-    //Get email and pass
-    //TODO: Check for real Emails
-
-    const name = msgtxtName.value;
-    const email = msgtxtEmail.value;
-    const pass = msgtxtPassword.value;
-    const auth = firebase.auth();
-    //Sign in
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-
-    const dbUserRef = firebase.database().ref();
-
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-            var user = firebase.auth().currentUser;
-            user.updateProfile({
-                displayName: name,
-                email: email
-
-            }).then(function() {
-                console.log(user.displayName);
-            }).catch(function(error) {
-
-            });
-
-            dbUserRef.child('users').child(firebaseUser.uid).set({
-                UserName: name,
-                Email: email,
-                eui: { eui: "000000000000000000000000000000" }
-            });
-        }
-
-        var user = firebase.auth().currentUser;
-        //console.log(document.getElementById('txtUpdateEmail').value);
-        user.updateProfile({ 
-            displayName: name,
-             photoURL: "/images/TestEgg101.png"
-        }).then(function() {  // Update successful.
-        }).catch(function(error) {  // An error happened.
-        });
-
-        user.updateEmail(email).then(function() {  // Update successful.
-        }).catch(function(error) {  // An error happened.
-        });
-    });
-});
-
 //
 btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
-});
-
-msgbtnCP.addEventListener('click', e => {
-    window.location.href = "changePassword.html";
 });
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -173,7 +108,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         if (user != null) { 
             dname = user.displayName; 
             frmUserNameTxt.innerText = 'Hi, ' + dname;
-            homeHead.innerText = dname + ' Welcome to Egg-splore Lynnwood!'
         }
     }
 });
@@ -183,9 +117,9 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
         fireLoading.classList.add('hide');
-        LMContainer.classList.remove('LMContainer');
-        LMContainer.classList.add('hide');
-        homeContainer.classList.remove('hide');
+        LMContainer.classList.add('LMContainer');
+        LMContainer.classList.remove('hide');
+        //homeContainer.classList.remove('hide');
         homeBackground.classList.remove('hide');
         homeBackground.classList.add('background');
         btnLogout.classList.remove('hide');
@@ -202,7 +136,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         LMContainer.classList.remove('hide');
         homeBackground.classList.remove('hide');
         homeBackground.classList.add('background');
-        homeContainer.classList.add('hide');
         LoginMessage.classList.remove('hide');
         btnLogout.classList.add('hide');
         btnLogin.classList.remove('hide');
@@ -212,4 +145,35 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         frmPassword.classList.remove('hide');
         frmUserName.classList.add('hide');
     }
+});
+
+/*
+const btnAccountName = document.getElementById('btnAccountName');
+btnAccountName.addEventListener('click', e => {
+    var user = firebase.auth().currentUser;
+    //console.log(document.getElementById('txtUpdateName').value);
+    if (document.getElementById('txtUpdateName').value != null) {
+        document.getElementById('AccName').innerText = document.getElementById('txtUpdateName').value;
+        user.updateProfile({
+            displayName: document.getElementById('txtUpdateName').value
+        }).then(function() {
+            console.log(user.displayName);
+        }).catch(function(error) {});
+    }
+});*/
+
+const msgbtnCP = document.getElementById('msgbtnCP');
+msgbtnCP.addEventListener('click', e => {
+    var auth = firebase.auth();
+    const msgtxtEmail = document.getElementById('msgtxtEmail');
+    var emailAddress = msgtxtEmail.value;
+
+    auth.sendPasswordResetEmail(emailAddress).then(function() {
+        // Email sent.
+        console.debug("Email Sent!");
+    }).catch(function(error) {
+        // An error happened.
+        console.debug("Error!!! Password Change Email Not Sent!?!");
+    });
+
 });
